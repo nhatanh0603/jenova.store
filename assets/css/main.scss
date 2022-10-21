@@ -1,0 +1,87 @@
+@import 'variables.scss';
+@import 'auth.scss';
+@import 'auth-action-group.scss';
+@import 'font/san-francisco.scss';
+@import 'loader.scss';
+@import 'dropdown.scss';
+@import 'menu.scss';
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  //font-family: 'San Francisco Text', sans-serif;
+}
+
+html {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 14px;
+  min-width: 300px;
+}
+
+body {
+  margin: 0;
+  background-image: $jnv-app__background--primary;
+  background-repeat: no-repeat;
+  color: $jnv__text-color--white;
+
+  button {
+    background-color: transparent;
+    background-image: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $jnv__text-color--white;
+    border: none;
+  }
+
+  input {
+    outline: none;
+  }
+}
+
+.section {
+  padding: $jnv__section-p-tnb--desktop $jnv__section-p-lnr--desktop;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1700px;
+  position: relative;
+}
+
+.jnv-main {
+  margin: 0 8rem;
+}
+
+.jnv-app__initial-screen {
+  background-image: $jnv-app__background--primary;
+  width: 100%;
+  height: 100%;
+  z-index: 11111;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .jnv-app__initial-wrapper {
+    position: relative;
+
+    img {
+      width: 300px;
+    }
+
+    .jnv-loader__wrapper {
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .section {
+    padding: $jnv__section-p-tnb--mobile $jnv__section-p-lnr--mobile;
+  }
+  .jnv-main {
+    margin: 0;
+  }
+}

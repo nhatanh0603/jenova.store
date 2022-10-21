@@ -1,0 +1,57 @@
+@mixin jnv-menu($device) {
+  .jnv-menu__container--#{$device} {
+    @if $device == desktop {
+      display: flex;
+      justify-content: center;
+      margin: 0.5rem 0;
+    } @else {
+      margin-top: 1rem;
+    }
+
+    .jnv-menu__wrapper--#{$device} {
+      display: flex;
+      font-size: 22px;
+      text-transform: uppercase;
+
+      @if $device == desktop {
+        justify-content: center;
+        width: 100%;
+        font-weight: 800;
+      } @else {
+        flex-direction: column;
+        font-weight: 600;
+      }
+      
+      .jnv-menu__item--#{$device} {
+        cursor: pointer;
+        text-decoration: none;
+        color: $jnv__color--white;
+
+        @if $device == desktop {
+          margin: 0 15px;
+        } @else {
+          text-align: center;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        
+        &:hover {
+          color: $jnv__color--scarlet !important;
+          text-shadow: 0 0 8px $jnv__color--scarlet;
+        }
+      }
+
+      .jnv-menu__active {
+        color: $jnv__color--scarlet;
+      }
+    }
+  }
+}
+
+
+
+@include jnv-menu("desktop");
+@include jnv-menu("mobile");

@@ -1,0 +1,46 @@
+/* <span class="jnv-loader--line"></span> */
+
+.jnv-loader--line {
+  width: 100%;
+  height: 4.8px;
+  display: inline-block;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+
+  &:after {
+    content: '';  
+    box-sizing: border-box;
+    width: 0;
+    height: 4.8px;
+    background: $jnv__color--white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: animateLine 1.5s linear infinite;
+  }
+}
+
+@keyframes animateLine {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* GLOBAL LOADER TRONG app.vue */
+.jnv-global-loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 50%;
+  z-index: 11111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

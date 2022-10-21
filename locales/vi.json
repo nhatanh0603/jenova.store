@@ -1,0 +1,39 @@
+{
+  "auth": {
+    "already_have_account": "Có Tài Khoản Rồi Hả?",
+    "create_account": "Tạo Tài Khoản",
+    "email": "E-mail",
+    "enter_email": "Nhập E-mail",
+    "enter_password": "Nhập Mật Khẩu",
+    "enter_username": "Nhập Tên Tài Khoản",
+    "forgot_password": "Quên Mật Khẩu Rồi?",
+    "hide": "Ẩn",
+    "join_jenova_store": "Tham Gia Jenova Store",    
+    "or_sign_in": "Hoặc Đăng Nhập",
+    "password": "Mật Khẩu",
+    "profile": "Hồ Sơ",
+    "reset": "Đặt Lại Mật Khẩu",
+    "show": "Hiện",
+    "sign_in": "Đăng Nhập",
+    "sign_out": "Đăng Xuất",
+    "sign_up": "Đăng Ký",
+    "username": "Tên Tài Khoản"
+  },
+
+  "content": {
+    "page": {
+      "about": {
+        "description": "Trang Web này được tạo ra với mục đích làm demo. Chúng tôi không mua bán bất cứ vật phẩm nào. Cảm ơn mọi người đã ghé thăm!"
+      }
+    }
+  },
+
+  "error": {
+    "bring_me_back": "Quay Lại Thôi Nào!"
+  },
+
+  "locale": {
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt"
+  }
+}

@@ -1,0 +1,150 @@
+.jnv-auth__signin-button {
+  font-weight: 600;
+
+  &:hover {
+    text-shadow: 0px 0px 6px $jnv__shadow-color--white;
+  }
+}
+
+.jnv-auth__signup-button {
+  border: 1px solid $jnv__color--light-grey;
+  border-radius: 999px;
+  padding: 5px 15px;
+  margin-left: 1rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $jnv__color--white;
+    color: $jnv__color--blue;
+  }
+}
+
+.jnv-auth__container {
+  max-width: 22rem;
+  margin: auto;
+
+  .jnv-auth__title {
+    color: $jnv__color--blue;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  .jnv-auth__form {
+    .jnv-auth__form-control {
+      margin-bottom: 1rem;
+
+      .jnv-auth__label {
+        color: $jnv__color--blue;
+        font-size: 12px;
+      }
+
+      .jnv-auth__input {
+        position: relative;
+
+        #Password {
+          padding-right: 2rem;
+        }
+        
+        input {
+          width: 100%;
+          border: none;
+          padding: 0.5rem 1.5rem 0.5rem 0;
+          border-bottom: 1px solid $jnv__color--light-grey;
+
+          #Password {
+            padding-right: 5rem;
+          }
+
+          &:focus {
+            border-bottom: 1px solid $jnv__color--blue;
+          }
+        }
+
+        .jnv-auth__visibility {
+          position: absolute;
+          top: 9px;
+          right: 35px;
+          color: #b3b3b3;
+          cursor: pointer;
+          font-size: 11px;
+          font-weight: 800;
+        }
+
+        .jnv-auth__clear-icon {
+          position: absolute;
+          width: 16px;
+          top: 8px;
+          right: 0;
+          cursor: pointer;
+
+          svg {
+            fill: $jnv__color--light-grey;
+          }
+        }
+      }
+    }
+
+    .jnv-auth__form-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 4rem;
+
+      .jnv-auth__form-button--primary {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 999px;
+        background-color: $jnv__color--blue;
+        color: $jnv__text-color--white;
+        font-weight: 700;
+        font-size: 13px;
+
+        &:hover {
+          background-color: $jnv__color--dark-blue;
+          box-shadow: 0 0 8px $jnv__color--dark-blue;
+        }
+      }
+
+      .jnv-auth__form-button--secondary {
+        text-transform: capitalize;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      .jnv-auth__form-button--tertiary {
+        font-weight: 800;
+        text-transform: capitalize;
+
+        &:hover {
+          color: $jnv__color--blue;
+        }
+      }
+    }
+  }
+
+  .jnv-auth__button {
+    border: none;
+    margin-bottom: 1rem;
+    color: $jnv__text-color--bluish-gray;
+  }
+}
+
+.jnv-auth__error-display--standard {
+  font-size: small;
+  color: $jnv__color--red;
+}
+
+.jnv-auth__error-display--unauthorized {
+  color: $jnv__color--red;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.jnv-auth__fill-red {
+  svg {
+    fill: $jnv__color--red !important;
+  }
+}
