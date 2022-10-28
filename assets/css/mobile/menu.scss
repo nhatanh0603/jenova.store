@@ -13,7 +13,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: $jnv-app__background--primary;
   z-index: 9999;
 
@@ -81,7 +81,7 @@
   }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 999px) {
   .jnv-menu__container--desktop {
     display: none;
   }

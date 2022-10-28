@@ -1,18 +1,20 @@
 <template>
-  <div>
+  <div class="jnv-layout__default">
     <Header />
 
-    <Menu />
-
-    <main class="jnv-main section">
-      <slot />
-    </main>
+    <div class="jnv-main">
+      <main class="section">
+        <div class="jnv-content">
+          <slot />
+        </div>
+      </main>
+    </div>
 
     <Footer />
   </div>
 </template>
+
 <script setup>
-import Header from '~~/components/Header.vue'
-import Menu from '~~/components/Menu.vue'
-import Footer from '~~/components/Footer.vue'
+  import Header from '~~/components/Header.vue'
+  import Footer from '~~/components/Footer.vue'
 </script>

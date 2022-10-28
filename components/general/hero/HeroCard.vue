@@ -16,29 +16,14 @@
               <span class="jnv-hero-card__hero-name-display">{{ hero.name_loc }}</span>            
             </div>
 
-            <hr class="jnv-hero-card_divider">
+            <hr class="jnv-hero-card__divider">
 
             <div class="jnv-hero-card__hero-on-liner">
               Shields his allies or himself from attacks
             </div>
 
-            <div class="jnv-hero-card__hero-base-container">
-              <div class="jnv-hero-card__hero-base">
-                <div class="jnv-hero-card__base-title">Attack Type</div>
-                <div class="jnv-hero-card__base-detail">
-                  <Ranged />
-                  <span>Melee</span>
-                </div>
-              </div>
-
-              <div class="jnv-hero-card__hero-base">
-                <div class="jnv-hero-card__base-title">Complexity</div>
-                <div class="jnv-hero-card__base-detail">
-                  <Complexity :level="1"/>
-                </div>
-              </div>
-            </div>
-          </div>
+            <HeroBase />
+          </div> 
 
           <div class="jnv-hero-card__price">
             ${{ random(10,100) }}
@@ -61,39 +46,23 @@
   import Strength from '../svg/attributes/Strength.vue'
   import Agility from '../svg/attributes/Agility.vue'
   import Intelligence from '../svg/attributes/Intelligence.vue'
-  import Melee from '../svg/hero_base/Melee.vue'
-  import Ranged from '../svg/hero_base/Ranged.vue'
-  import Complexity from '../svg/hero_base/Complexity.vue'
+  import HeroBase from './parts/HeroBase.vue'
 
   const props = defineProps({
     hero: Object
   })
 
-  let imageURL = ref('https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/')
-
-  //let attributeImgURL = ref('https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_')
+  let imageURL = ref(useRuntimeConfig().apiHeroImage)
+  let heroName = ''
   
   onBeforeMount(() => {
-    imageURL.value += props.hero.name.split('npc_dota_hero_')[1] + '.png'
-    
-    /* switch (props.hero.primary_attr) {
-      case 0:
-        attributeImgURL.value += 'strength.png'
-        break;
-      
-      case 1:
-        attributeImgURL.value += 'agility.png'
-        break;
-    
-      default:
-        attributeImgURL.value += 'intelligence.png'
-        break;
-    } */
+    heroName = props.hero.name.split('npc_dota_hero_')[1]
+    imageURL.value += heroName + '.png'
   })
 
   const getHeroDetail = () => {
     console.log(props.hero.id)
-    useRouter().push({ path: `/hero/${props.hero.id}` })
+    useRouter().push({ path: `/hero/${heroName}` })
   }
 
   const buyNow = () => {
@@ -145,7 +114,7 @@
           width: $jnv-hero-card__width;
           //border-radius: 0 0 $jnv-hero-card__border $jnv-hero-card__border;
           background: $jnv-hero-card__body-background;
-          color: $jnv__text-color--white;
+          color: $jnv__color--white;
 
           .jnv-hero-card__hero-info {
             display: flex;
@@ -170,7 +139,7 @@
               }
             }
             
-            .jnv-hero-card_divider {
+            .jnv-hero-card__divider {
               width: 100%;
               border-color: $jnv__color--pale-black;
             }
@@ -180,33 +149,6 @@
               font-size: 12px;
               margin: 5px 0 10px 0;
             }
-
-            .jnv-hero-card__hero-base-container {
-              display: table;
-              .jnv-hero-card__hero-base {
-                display: table-row;
-                text-transform: uppercase;
-                font-weight: bold;
-
-                .jnv-hero-card__base-title {
-                  display: table-cell;
-                  font-size: 12px;
-                  color: $jnv__color--purply-pink;
-                }
-
-                .jnv-hero-card__base-detail {
-                  display: table-cell;
-                  font-size: 11px;
-                  padding: 5px 0;
-                  display: flex;
-                  align-items: center;
-
-                  svg {
-                    margin-right: 8px;
-                  }
-                }
-              }
-            }          
           }
 
           .jnv-hero-card__price {

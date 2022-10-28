@@ -3,14 +3,15 @@
     @if $device == desktop {
       display: flex;
       justify-content: center;
-      margin: 0.5rem 0;
+      width: 100%;
+      background: $jnv-header__desktop-menu-background;
     } @else {
       margin-top: 1rem;
     }
 
     .jnv-menu__wrapper--#{$device} {
       display: flex;
-      font-size: 22px;
+      font-size: 17px;
       text-transform: uppercase;
 
       @if $device == desktop {
@@ -28,7 +29,7 @@
         color: $jnv__color--white;
 
         @if $device == desktop {
-          margin: 0 15px;
+          padding: 10px 15px;
         } @else {
           text-align: center;
           margin-bottom: 1rem;
@@ -44,8 +45,23 @@
         }
       }
 
-      .jnv-menu__active {
-        color: $jnv__color--scarlet;
+      .jnv-menu__active--#{$device} {
+        @if $device == desktop {
+          background-color: $jnv__color--scarlet;
+          display: flex;
+          align-items: center;
+          border-radius: 20px 0 20px 0;
+        } @else {
+          span {
+            background-color: $jnv__color--scarlet;
+            padding: 5px 33px;
+            border-radius: 20px 5px 20px 5px;
+          }          
+        }
+
+        &:hover {
+          color: $jnv__color--white !important;
+        }     
       }
     }
   }

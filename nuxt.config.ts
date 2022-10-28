@@ -29,7 +29,14 @@ export default defineNuxtConfig({
       appName: 'Jenova Store',
       appTokenName: 'jenova_store_token',
       apiBase: 'http://jenova-store-server.test',
-      rootUrl: 'http://jenovastore.com'
+      rootUrl: 'http://jenovastore.com',
+      apiHeroStat: 'https://api.jenova.store/images/stats/',
+      apiHeroImage: 'https://api.jenova.store/images/heroes/',
+      apiHeroAbility: 'https://api.jenova.store/images/abilities/',
+      apiHeroVideo: 'https://api.jenova.store/videos/heroes/',
+      apiHeroVideoPoster: 'https://api.jenova.store/videos/heroes/posters/',
+      logoFull: 'http://localhost:3000/jenova-store-logo-full.svg',
+      logoSymbol: 'http://localhost:3000/jenova-store-logo-symbol.svg',
     }
   },
 

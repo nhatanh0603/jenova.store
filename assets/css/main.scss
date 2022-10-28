@@ -25,14 +25,14 @@ body {
   margin: 0;
   background-image: $jnv-app__background--primary;
   background-repeat: no-repeat;
-  color: $jnv__text-color--white;
+  color: $jnv__color--white;
 
   button {
     background-color: transparent;
     background-image: none;
     cursor: pointer;
     text-transform: uppercase;
-    color: $jnv__text-color--white;
+    color: $jnv__color--white;
     border: none;
   }
 
@@ -45,13 +45,32 @@ body {
   padding: $jnv__section-p-tnb--desktop $jnv__section-p-lnr--desktop;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1700px;
+  max-width: 1500px;
   position: relative;
+  width: 100%;
 }
 
-.jnv-main {
-  margin: 0 8rem;
+.jnv-layout__default {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .jnv-main-part {
+    width: 100%;
+    background: $jnv-main-part__main-part-background;
+    box-shadow: 0 0 5px 1px $jnv__shadow-color--almost-black;
+  }
+
+  .jnv-main {
+    width: 100%;
+
+    .jnv-content {
+      width: 75%;
+      margin: 3rem auto;
+    }
+  }
 }
+
 
 .jnv-app__initial-screen {
   background-image: $jnv-app__background--primary;
@@ -77,11 +96,16 @@ body {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 999px) {
   .section {
     padding: $jnv__section-p-tnb--mobile $jnv__section-p-lnr--mobile;
   }
+
   .jnv-main {
     margin: 0;
+
+    .jnv-content {
+      width: 100% !important;
+    }
   }
 }

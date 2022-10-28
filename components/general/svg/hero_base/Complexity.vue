@@ -22,6 +22,7 @@
   .jnv-hero-complexity {
     display: flex;
     width: 70px;
+    margin-left: 3px;
     justify-content: space-between;
 
     .jnv-hero-complexity__diamond-piece {

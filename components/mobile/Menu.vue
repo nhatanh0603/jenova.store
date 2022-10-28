@@ -7,7 +7,7 @@
     <Teleport to='body'>
       <div class="jnv-header__mobile-menu-item section" v-show="show">
         <div class="jnv-header__mobile-menu--top">
-          <img :src="rootUrl + '/jenova-store-full-logo.svg'"
+          <img :src="logoFull"
                alt="Jenova Store Full Logo"
                class="jnv-header__full-logo"
           >
@@ -36,5 +36,5 @@
   import MainMenu from '../Menu.vue'
 
   const show = ref(false)
-  const { rootUrl } = useRuntimeConfig()
+  const { logoFull } = useRuntimeConfig()
 </script>

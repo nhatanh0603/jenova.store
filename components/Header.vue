@@ -1,40 +1,45 @@
 <template>
-  <header class="jnv-header section">
-    <div class="jnv-header__logo">
-      <NuxtLink to="/">
-        <img :src="rootUrl + '/jenova-store-full-logo.svg'"
-            alt="Jenova Store Full Logo"
-            class="jnv-header__full-logo"
-        >
-      </NuxtLink>
-    </div>
+  <div class="jnv-main-part jnv-header-sticky">
+    <header class="jnv-header section">
+      <div class="jnv-header__logo">
+        <NuxtLink to="/">
+          <img :src="logoFull"
+              alt="Jenova Store Full Logo"
+              class="jnv-header__full-logo"
+          >
+        </NuxtLink>
+      </div>
 
-    <div class="jnv-header__navigation-bar--desktop">
-      <AuthActionGroup for-device="desktop"/>
+      <div class="jnv-header__navigation-bar--desktop">
+        <AuthActionGroup for-device="desktop"/>
 
-      <LanguageSwitcher />
-    </div>
+        <LanguageSwitcher />
+      </div>
 
-    <!-- Mobile Menu -->
-    <Menu />
+      <!-- Mobile Menu -->
+      <Menu />
 
-    <!-- MODALS -->
-    <div v-if="!user.signedIn">
-      <Auth auth-type="sign_in" btn-prim="sign_in" :btn-second="btnSecondSignIn" :btn-terti="btnTertiSignIn"/>
-      <Auth auth-type="sign_up" btn-prim="create_account" :btn-second="btnSecondSignUp"/>
-      <Auth auth-type="forgot_password" btn-prim="reset" :btn-second="btnSecondForgotPassword"/>
-    </div>
-  </header>
+      <!-- MODALS -->
+      <div v-if="!user.signedIn">
+        <Auth auth-type="sign_in" btn-prim="sign_in" :btn-second="btnSecondSignIn" :btn-terti="btnTertiSignIn"/>
+        <Auth auth-type="sign_up" btn-prim="create_account" :btn-second="btnSecondSignUp"/>
+        <Auth auth-type="forgot_password" btn-prim="reset" :btn-second="btnSecondForgotPassword"/>
+      </div>    
+    </header>
+
+    <MenuDesktop />
+  </div>
 </template>
 
 <script setup>
+import MenuDesktop from './Menu.vue'
 import Menu from './mobile/Menu.vue'
 import Auth from './authentication/Auth.vue'
 import LanguageSwitcher from './general/LanguageSwitcher.vue'
 import AuthActionGroup from './authentication/AuthActionGroup.vue'
 import { useAuthStore } from '@/stores/auth'
 
-const { rootUrl } = useRuntimeConfig()
+const { logoFull } = useRuntimeConfig()
 const { user } = useAuthStore()
 
 const btnSecondSignIn = {
@@ -81,6 +86,12 @@ const btnTertiSignIn = {
   .jnv-header__full-logo {
     width: 250px;
     max-width: 100%;
+  }
+
+  .jnv-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 9000;
   }
 
   @import '../assets/css/mobile/main.scss';
