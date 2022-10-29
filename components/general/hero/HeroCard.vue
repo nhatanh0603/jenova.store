@@ -84,6 +84,7 @@
   @import '@/assets/css/variables.scss';
 
   .jnv-hero-card__container {
+    margin: auto;
     cursor: pointer;
 
     .jnv-hero-card__wrapper {
