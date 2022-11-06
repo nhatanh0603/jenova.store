@@ -1,9 +1,9 @@
 <template>
   <div class="jnv-hero-card__container">
     <div class="jnv-hero-card__wrapper">
-      <div class="jnv-hero-card__content" @click="getHeroDetail">
+      <div class="jnv-hero-card__content" @click="goToHeroDetail">
         <div class="jnv-hero-card__header">
-          <img :src="imageURL" alt="Hero Image">
+          <img :src="imageURL + hero.name + '.png'" alt="Hero Image">
         </div>
 
         <div class="jnv-hero-card__body">
@@ -13,20 +13,20 @@
               <Agility v-else-if="hero.primary_attr == 1"/>
               <Intelligence v-else/>
               
-              <span class="jnv-hero-card__hero-name-display">{{ hero.name_loc }}</span>            
+              <span class="jnv-hero-card__hero-name-display">{{ hero.display_name }}</span>            
             </div>
 
             <hr class="jnv-hero-card__divider">
 
             <div class="jnv-hero-card__hero-on-liner">
-              Shields his allies or himself from attacks
+              {{ hero.one_liner }}
             </div>
 
-            <HeroBase />
+            <HeroBase :attack_type="hero.attack_type" :complexity="hero.complexity"/>
           </div> 
 
           <div class="jnv-hero-card__price">
-            ${{ random(10,100) }}
+            ${{ hero.price }}
           </div>
         </div>
       </div>
@@ -52,17 +52,10 @@
     hero: Object
   })
 
-  let imageURL = ref(useRuntimeConfig().apiHeroImage)
-  let heroName = ''
-  
-  onBeforeMount(() => {
-    heroName = props.hero.name.split('npc_dota_hero_')[1]
-    imageURL.value += heroName + '.png'
-  })
+  const imageURL = ref(useRuntimeConfig().apiHeroImage)
 
-  const getHeroDetail = () => {
-    console.log(props.hero.id)
-    useRouter().push({ path: `/hero/${heroName}` })
+  const goToHeroDetail = () => {
+    useRouter().push({ path: `/hero/${props.hero.slug}` })
   }
 
   const buyNow = () => {
@@ -72,12 +65,6 @@
   const addToCart = () => {
     console.log('Add To Cart')
   }
-
-  const random = (min, max) => {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
 </script>
 
 <style lang="scss" scoped>
@@ -93,9 +80,9 @@
       width: 256px;
       border-radius: $jnv-hero-card__border;
       box-shadow: 0px 0px 5px 1px $jnv__shadow-color--almost-black;
+      transition: transform 0.3s linear, box-shadow 1s linear;
 
       &:hover {
-        animation: hero-card-hover 1s linear, hero-card-scale 0.3s linear;
         box-shadow: 0px 0px 10px 1px $jnv__color--white;
         transform: scale(1.1)
       }
@@ -195,24 +182,6 @@
           }
         }
       }
-    }
-  }
-
-  @keyframes hero-card-hover {
-    from {
-      box-shadow: 0px 0px 5px 1px $jnv__shadow-color--almost-black;
-    }
-    to {
-      box-shadow: 0px 0px 10px 1px $jnv__color--white;
-    }
-  }
-
-  @keyframes hero-card-scale {
-    from {
-      transform: scale(1)
-    }
-    to {
-      transform: scale(1.1)
     }
   }
 </style>

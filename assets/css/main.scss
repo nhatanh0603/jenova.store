@@ -18,7 +18,7 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-size: 14px;
-  min-width: 300px;
+  min-width: 350px;
 }
 
 body {
@@ -71,6 +71,13 @@ body {
   }
 }
 
+.jnv-error__display {
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 
 .jnv-app__initial-screen {
   background-image: $jnv-app__background--primary;
@@ -96,16 +103,4 @@ body {
   }
 }
 
-@media screen and (max-width: 999px) {
-  .section {
-    padding: $jnv__section-p-tnb--mobile $jnv__section-p-lnr--mobile;
-  }
-
-  .jnv-main {
-    margin: 0;
-
-    .jnv-content {
-      width: 100% !important;
-    }
-  }
-}
+@import 'responsive.scss';

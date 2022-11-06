@@ -18,6 +18,7 @@ $jnv__color--kelly-green: #1fb11d;
 $jnv__color--light-sage: #b3e9b2;
 $jnv__color--bluish-gray: #7b929e;
 $jnv__color--light-black: #2a2a2a;
+$jnv__color--golden-gradient: radial-gradient(#ffed8a, #FFDE2E,#d1b000);
 
 //Icon Colors
 $jnv__icon-color--light-grey: #e3e3e3;
@@ -41,7 +42,17 @@ $jnv-hero-card__body-background: linear-gradient(80deg, #252728 0%, #101415 100%
 $jnv-main-part__main-part-background: linear-gradient(to right, #00010c, #001f2e);
 $jnv-header__desktop-menu-background: rgb(31, 177, 29, 10%);
 $jnv-hero-detail__background: rgb(0, 0, 0, 30%);
+$jnv__bg-dark-navy--two-side-fade: radial-gradient(circle, $jnv__color--dark-blue, transparent);
 
 /* HERO CARD */
 $jnv-hero-card__border: 10px;
 $jnv-hero-card__width: 256px;
+
+/* HERO DETAIL */
+$jnv-hero-detail__bg-padding: 2rem;
+
+@mixin golden-gradient-text {
+  background: $jnv__color--golden-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

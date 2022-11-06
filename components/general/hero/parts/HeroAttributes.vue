@@ -11,8 +11,8 @@
 
         <div class="jnv-hero-attributes__value">
           <span class="jnv-hero-attributes__value-wrapper">
-            25 
-            <span class="jnv-hero-attributes__value-bonus">+2.8</span>
+            {{ attributes.str_base }} 
+            <span class="jnv-hero-attributes__value-bonus">+{{ attributes.str_gain }}</span>
           </span>
           
         </div>
@@ -28,8 +28,8 @@
 
         <div class="jnv-hero-attributes__value">
           <span class="jnv-hero-attributes__value-wrapper">
-            20
-            <span class="jnv-hero-attributes__value-bonus">+2.0</span>
+            {{ attributes.agi_base }}
+            <span class="jnv-hero-attributes__value-bonus">+{{ attributes.agi_gain }}</span>
           </span>
                      
         </div>
@@ -45,8 +45,8 @@
 
         <div class="jnv-hero-attributes__value">
           <span class="jnv-hero-attributes__value-wrapper">
-            18
-            <span class="jnv-hero-attributes__value-bonus">+1.6</span>
+            {{ attributes.int_base }}
+            <span class="jnv-hero-attributes__value-bonus">+{{ attributes.int_gain }}</span>
           </span>           
         </div>
       </div>
@@ -59,6 +59,10 @@
   import Agility from '../../svg/attributes/Agility.vue'
   import Strength from '../../svg/attributes/Strength.vue'
   import Intelligence from '../../svg/attributes/Intelligence.vue'
+
+  const props = defineProps({
+    attributes: Object
+  })
 </script>
   
 <style lang="scss">

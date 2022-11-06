@@ -1,4 +1,4 @@
-export const useApi = async (url, options) => {
+export const useApi = (url, options) => {
   const runtimeConfig = useRuntimeConfig()
   const serverRoute = runtimeConfig.apiBase;
   const apiRoute = `${serverRoute}/api`;
@@ -16,7 +16,7 @@ export const useApi = async (url, options) => {
 
   const baseURL = !options?.baseURL ? apiRoute : options.baseURL
 
-  return await $fetch(url, {
+  return $fetch(url, {
     baseURL: baseURL,
     headers,
     ...opts

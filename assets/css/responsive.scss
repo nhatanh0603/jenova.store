@@ -1,0 +1,66 @@
+@media screen and (max-width: 900px) {
+  .section {
+    padding: $jnv__section-p-tnb--mobile $jnv__section-p-lnr--mobile;
+  }
+
+  .jnv-main {
+    margin: 0;
+
+    .jnv-content {
+      width: 100% !important;
+    }
+  }
+
+  /* MENU.VUE */
+  .jnv-menu__container--desktop {
+    display: none;
+  }
+
+  /* MOBILE HEADER */
+  .jnv-header {
+    .jnv-header__navigation-bar--mobile {
+      display: block;
+    }
+
+    .jnv-header__navigation-bar--desktop {
+      display: none !important;
+    }
+  }
+
+  .jnv-header__full-logo {
+    width: 200px;
+  }
+
+  /* HERO DETAIL */
+  .jnv-hero-detail__section {
+    flex-direction: column;
+
+    .jnv-hero-detail__hero-portrait-container {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .jnv-hero-detail__detail-container {
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0;
+    }
+
+    .jnv-hero-detail__roles {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .jnv-hero-detail__stats {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+
+    .jnv-hero-detail__ability {
+      .jnv-hero-detail__ability-info-aghanim {
+        white-space: normal !important;
+      }
+    }
+  }
+}

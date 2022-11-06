@@ -6,8 +6,9 @@
       </div>
       <div class="jnv-hero-base__detail">
         <div class="jnv-hero-base_detail-wrapper">
-          <Ranged />
-          <span>Melee</span>
+          <Melee v-if="attack_type == 1"/>
+          <Ranged v-else/>
+          <span>{{ attack_type == 1 ? 'Melee' : 'Ranged'}}</span>
         </div>        
       </div>
     </div>
@@ -18,7 +19,7 @@
       </div>
       <div class="jnv-hero-base__detail">
         <div class="jnv-hero-base_detail-wrapper">
-          <Complexity :level="1"/>
+          <Complexity :level="complexity"/>
         </div>
       </div>
     </div>
@@ -29,6 +30,11 @@
   import Melee from '../../svg/hero_base/Melee.vue'
   import Ranged from '../../svg/hero_base/Ranged.vue'
   import Complexity from '../../svg/hero_base/Complexity.vue'
+
+  const props = defineProps({
+    attack_type: Number,
+    complexity: Number
+  })
 </script>
   
 <style lang="scss">
