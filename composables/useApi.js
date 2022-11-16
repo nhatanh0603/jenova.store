@@ -1,7 +1,7 @@
 export const useApi = (url, options) => {
   const runtimeConfig = useRuntimeConfig()
-  const serverRoute = runtimeConfig.apiBase;
-  const apiRoute = `${serverRoute}/api`;
+  const serverRoute = runtimeConfig.apiBase
+  const apiRoute = `${serverRoute}/api`
   const token = localStorage.getItem(runtimeConfig.appTokenName)
 
   const headers = {

@@ -1,11 +1,11 @@
 <template>
-  <div>Under Construction</div>
+  <div class="jnv-checkout">
+    CHECKOUT PAGE
+  </div>
 </template>
   
 <script setup>
-  useHead({
-    title: 'News'
-  })
+  
 </script>
   
 <style lang="scss">

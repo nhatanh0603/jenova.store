@@ -6,51 +6,54 @@
 </template>
   
 <script setup>
-  import HeroCard from '~~/components/general/hero/HeroCard.vue'
+  import HeroCard from '@/components/general/hero/HeroCard.vue'
 
   const heroes = ref({})
   const isLoading = ref(false)
 
-  onBeforeMount(async () => {
-    await useApi('/category/1/products', {
+  onBeforeMount(() => {
+    fetchHeroes(true)
+
+    window.addEventListener('scroll', lazyLoad)
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', lazyLoad)
+  })
+
+  const lazyLoad = () => {
+    var totalScreenHeight = document.body.scrollHeight
+    var currentScrollPosition = window.scrollY + window.innerHeight
+
+    if(currentScrollPosition > totalScreenHeight * 0.8 
+        && isLoading.value == false 
+        && heroes.value.links.next != null) {
+      fetchHeroes()
+    }
+  }
+
+  const fetchHeroes = async (ini = false) => {
+    var url = ini ? '/category/1/products' : heroes.value.links.next
+
+    await useApi(url, {
+      async onRequest() {
+        isLoading.value = true
+      },
+
       async onResponse({ response }) {
         if(response.status == 200) {
-          heroes.value = response._data
-        }
-      }
-    })
-
-    window.addEventListener('scroll', function() {
-      var totalScreenHeight = document.body.scrollHeight
-      var currentScrollPosition = window.scrollY + window.innerHeight
-
-      if(currentScrollPosition > totalScreenHeight * 0.8 && isLoading.value == false) {
-        fetchNextHeroes()
-      }
-    })
-  })  
-
-  const fetchNextHeroes = async () => {
-    if(heroes.value.links.next) {
-      await useApi(heroes.value.links.next, {
-        async onRequest() {
-          isLoading.value = true
-        },
-
-        async onResponse({ response }) {
-          if(response.status == 200) {
+          if(ini) {
+            heroes.value = response._data
+          }else {
             heroes.value.data.push(...response._data.data)
             heroes.value.links = response._data.links
             heroes.value.meta = response._data.meta
-
-            isLoading.value = false
-          }        
-        }
-      })
-    }else {
-      isLoading.value = false
-    }
-    
+          }
+          
+          isLoading.value = false
+        }        
+      }
+    })
   }
 </script>
   

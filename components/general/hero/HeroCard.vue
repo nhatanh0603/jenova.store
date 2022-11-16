@@ -3,7 +3,7 @@
     <div class="jnv-hero-card__wrapper">
       <div class="jnv-hero-card__content" @click="goToHeroDetail">
         <div class="jnv-hero-card__header">
-          <img :src="imageURL + hero.name + '.png'" alt="Hero Image">
+          <img :src="url.heroImage + hero.name + '.png'" alt="Hero Image">
         </div>
 
         <div class="jnv-hero-card__body">
@@ -22,11 +22,12 @@
               {{ hero.one_liner }}
             </div>
 
-            <HeroBase :attack_type="hero.attack_type" :complexity="hero.complexity"/>
+            <HeroBase :attack_type="hero.attack_capability" :complexity="hero.complexity"/>
           </div> 
 
           <div class="jnv-hero-card__price">
-            ${{ hero.price }}
+            <img :src="url.misc + 'coin.svg'" alt="Currency Icon" width="30">
+            <span>{{ hero.price }}</span>
           </div>
         </div>
       </div>
@@ -34,8 +35,13 @@
 
       <div class="jnv-hero-card__actions">
         <div class="jnv-hero-card__action-group">
-          <button class="jnv-hero-card__button jnv-hero-card__button--buy-now" @click="buyNow">Buy Now</button>
-          <button class="jnv-hero-card__button jnv-hero-card__button--add-to-cart" @click="addToCart">Add To Cart</button>
+          <button class="jnv-hero-card__button jnv-hero-card__button--buy-now" @click="buyNow">
+            Buy Now
+          </button>
+
+          <button class="jnv-hero-card__button jnv-hero-card__button--add-to-cart" @click="addToCart">
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
@@ -47,12 +53,13 @@
   import Agility from '../svg/attributes/Agility.vue'
   import Intelligence from '../svg/attributes/Intelligence.vue'
   import HeroBase from './parts/HeroBase.vue'
+  import { useCartStore } from '~~/stores/cart'
 
   const props = defineProps({
     hero: Object
   })
 
-  const imageURL = ref(useRuntimeConfig().apiHeroImage)
+  const { url } = useAppConfig()
 
   const goToHeroDetail = () => {
     useRouter().push({ path: `/hero/${props.hero.slug}` })
@@ -63,7 +70,7 @@
   }
 
   const addToCart = () => {
-    console.log('Add To Cart')
+    useCartStore().addToCart(props.hero.id, 1)
   }
 </script>
 
@@ -122,8 +129,7 @@
                 word-wrap: break-word;
                 text-transform: uppercase;
                 font-weight: 800;
-                color: $jnv__color--apricot;
-                //color: $jnv__color--white;
+                @include golden-gradient-text;
               }
             }
             
@@ -140,15 +146,24 @@
           }
 
           .jnv-hero-card__price {
-            font-size: 30px;
+            font-size: 22px;
             font-weight: 900;
             margin-top: 10px;
-            color: $jnv__color--kelly-green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          
+            span { 
+              @include golden-gradient-text;
+            }
+
+            img {
+              margin-right: 10px;
+            }
           }
         }
       }
       
-
       .jnv-hero-card__actions {
         .jnv-hero-card__action-group {
           display: flex;

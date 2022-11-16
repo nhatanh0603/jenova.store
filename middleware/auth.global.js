@@ -1,4 +1,5 @@
 import { useAuthStore } from '~~/stores/auth'
+import { useCartStore } from '~~/stores/cart'
 import { useInitialDataStore } from '@/stores/initialData'
 
 let firstTimeAccess = true
@@ -20,7 +21,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
           async onResponse({ response }) {
             if(response.status == 200) {
               auth.localSignIn(response._data.user)
-            }
+              useCartStore().fetchCart()
+            }             
+              
             initialData.initialDataStatus.authentication = true
           },
           async onResponseError() {

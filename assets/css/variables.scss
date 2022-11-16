@@ -25,9 +25,13 @@ $jnv__icon-color--light-grey: #e3e3e3;
 $jnv__icon-color--grey: #78909C;
 
 //Shadow Colors
+$jnv__shadow-color--dark-gray: #5c5656;
 $jnv__shadow-color--light-black: #2e2e2e;
 $jnv__shadow-color--almost-black: #0c0c0c;
 $jnv__shadow-color--white: #fff;
+$jnv__shadow-success: #62f155;
+$jnv__shadow-warning: #fbe948;
+$jnv__shadow-danger: #f93d3d;
 
 //Margin & Padding
 $jnv__section-p-lnr--desktop: 50px;
@@ -43,6 +47,9 @@ $jnv-main-part__main-part-background: linear-gradient(to right, #00010c, #001f2e
 $jnv-header__desktop-menu-background: rgb(31, 177, 29, 10%);
 $jnv-hero-detail__background: rgb(0, 0, 0, 30%);
 $jnv__bg-dark-navy--two-side-fade: radial-gradient(circle, $jnv__color--dark-blue, transparent);
+$jnv__bg-success: linear-gradient(90deg, #047c00, #28ab24);
+$jnv__bg-warning: linear-gradient(90deg, #a39208, #bbab20);
+$jnv__bg-danger: linear-gradient(90deg, #a10101, #df0303);
 
 /* HERO CARD */
 $jnv-hero-card__border: 10px;

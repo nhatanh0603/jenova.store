@@ -15,7 +15,7 @@
 
         <div class="jnv-hero-detail__ability-info-wrapper">
           <div class="jnv-hero-detail__ability-info">
-            <img :src="apiHeroAbility + selectedAbility.name_slug + '.png'" :alt="selectedAbility.name" class="jnv-hero-detail__ability-image">
+            <img :src="url.heroAbility + selectedAbility.name_slug + '.png'" :alt="selectedAbility.name" class="jnv-hero-detail__ability-image">
 
             <div class="jnv-hero-detail__ability-info-content">
               <div class="jnv-hero-detail__ability-info-name">
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="jnv-hero-detail__ability-info-lore" v-html="selectedAbility.lore"></div>
+          <div class="jnv-hero-detail__ability-info-lore" v-html="selectedAbility.lore" v-if="selectedAbility.lore"></div>
         </div>        
       </div>
     </div>
@@ -48,7 +48,7 @@
     abilities: Object
   })
 
-  const { apiHeroAbility, apiHeroStat } = useRuntimeConfig()
+  const { url } = useAppConfig()
 
   const aghanimInfo = {
     shard_upgrade: 'shard ability upgrade',
@@ -85,9 +85,9 @@
 
   const getAghanimImageLink = (index) => {
     if(index == 'aghanim_shard')
-      return 'background-image: url(\'' + apiHeroStat + 'aghs_shard.png'
+      return 'background-image: url(\'' + url.heroStat + 'aghs_shard.png'
     if(index == 'aghanim_scepter')
-      return 'background-image: url(\'' + apiHeroStat + 'aghs_scepter.png'
+      return 'background-image: url(\'' + url.heroStat + 'aghs_scepter.png'
   }
 
   const getAbilityImageClass = (index) => {
@@ -97,7 +97,7 @@
   }
 
   const getAbilityImageLink = (name_slug) => {
-    return 'background-image: url(\'' + apiHeroAbility + name_slug + '.png\')'
+    return 'background-image: url(\'' + url.heroAbility + name_slug + '.png\')'
   }
 </script>
   

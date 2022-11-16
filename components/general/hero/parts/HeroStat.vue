@@ -10,7 +10,7 @@
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_damage.png'" 
+          <img :src="url.heroStat + 'icon_damage.png'" 
                 alt="Icon Damage" 
                 title="Damage" 
                 class="jnv-hero-detail__stat-img"
@@ -22,7 +22,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_attack_time.png'"
+          <img :src="url.heroStat + 'icon_attack_time.png'"
                 alt="Icon Attack Time"
                 title="Attack Time"
                 class="jnv-hero-detail__stat-img"
@@ -34,7 +34,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_attack_range.png'"
+          <img :src="url.heroStat + 'icon_attack_range.png'"
                 alt="Icon Attack Range"
                 title="Attack Range"
                 class="jnv-hero-detail__stat-img"
@@ -46,7 +46,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_projectile_speed.png'"
+          <img :src="url.heroStat + 'icon_projectile_speed.png'"
                 alt="Icon Projectile Speed"
                 title="Projectile Speed"
                 class="jnv-hero-detail__stat-img"
@@ -65,7 +65,7 @@
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_armor.png'"
+          <img :src="url.heroStat + 'icon_armor.png'"
                 alt="Icon Armor" title="Armor"
                 class="jnv-hero-detail__stat-img"
           >
@@ -76,7 +76,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_magic_resist.png'"
+          <img :src="url.heroStat + 'icon_magic_resist.png'"
                 alt="Icon Magic Resist"
                 title="Magic Resist"
                 class="jnv-hero-detail__stat-img"
@@ -94,7 +94,7 @@
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_movement_speed.png'"
+          <img :src="url.heroStat + 'icon_movement_speed.png'"
                 alt="Icon Movement Speed"
                 title="Movement Speed"
                 class="jnv-hero-detail__stat-img"
@@ -106,7 +106,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_turn_rate.png'"
+          <img :src="url.heroStat + 'icon_turn_rate.png'"
                 alt="Icon Turn Rate" title="Turn Rate"
                 class="jnv-hero-detail__stat-img">
 
@@ -116,7 +116,7 @@
         </div>
 
         <div class="jnv-hero-detail__stat-value-section">
-          <img :src="apiHeroStat + 'icon_vision.png'"
+          <img :src="url.heroStat + 'icon_vision.png'"
                 alt="Icon Vision"
                 title="Vision"
                 class="jnv-hero-detail__stat-img">
@@ -134,7 +134,7 @@
     data: Object
   })
 
-  const { apiHeroStat } = useRuntimeConfig()
+  const { url } = useAppConfig()
 </script>
   
 <style lang="scss">

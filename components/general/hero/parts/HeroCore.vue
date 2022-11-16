@@ -23,35 +23,48 @@
     <hr class="jnv-hero-detail__divider">
 
     <div class="jnv-hero-detail__price">
-      ${{ data.price }}
+      <img :src="url.misc + 'coin.svg'" alt="Currency Icon" width="40">
+      <span>{{ data.price }}</span>
     </div>
 
     <!-- ACTION GROUP -->
     <div class="jnv-hero-detail__actions">
       <div class="jnv-hero-detail__quantity">
-        <div class="jnv-hero-detail__quantity-change">-</div>
-        <input class="jnv-hero-detail__quantity-display" type="number" min="1" max="100" value="1">
-        <div class="jnv-hero-detail__quantity-change">+</div>
+        <QuantityEditable :stock="data.stock" @quantity-change="(val) => quantity = val"/>
+        <span class="jnv-hero-detail__stock-available--singular" v-if="data.stock == 1">Only 1 left</span>
+        <span class="jnv-hero-detail__stock-available--plural" v-else>{{ data.stock + ' pieces available'}}</span>
       </div>
 
       <div class="jnv-hero-detail__action-group">
-        <button class="jnv-hero-detail__button jnv-hero-detail__button--buy-now">Buy Now</button>
-        <button class="jnv-hero-detail__button jnv-hero-detail__button--add-to-cart">Add To Cart</button>
+        <button class="jnv-hero-detail__button jnv-hero-detail__button--buy-now">
+          Buy Now</button>
+        <button class="jnv-hero-detail__button jnv-hero-detail__button--add-to-cart" @click="addToCart">
+          Add To Cart
+        </button>
       </div>              
     </div>
   </div>
 </template>
   
 <script setup>
+  import QuantityEditable from '../../QuantityEditable.vue'
   import HeroBase from '../parts/HeroBase.vue'
   import HeroAttributes from '../parts/HeroAttributes.vue'
   import Strength from '../../svg/attributes/Strength.vue'
   import Agility from '../../svg/attributes/Agility.vue'
   import Intelligence from '../../svg/attributes/Intelligence.vue'
+  import { useCartStore } from '@/stores/cart'
   
   const props = defineProps({
     data: Object
   })
+  
+  const { url } = useAppConfig()
+  const quantity = ref(1)
+
+  const addToCart = () => {
+    useCartStore().addToCart(props.data.id, quantity.value)
+  }
 </script>
   
 <style lang="scss">
@@ -98,11 +111,20 @@
     }
 
     .jnv-hero-detail__price {
-      margin: 10px 0;
+      margin: 10px 0 15px;
       font-size: 28px;
       font-weight: 800;
-      text-align: center;
-      @include golden-gradient-text;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      
+      img {
+        margin-right: 10px;
+      }
+
+      span {
+        @include golden-gradient-text;
+      }
     }
 
     .jnv-hero-detail__actions {
@@ -111,37 +133,19 @@
 
       .jnv-hero-detail__quantity {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-bottom: 15px;
 
-        .jnv-hero-detail__quantity-display {
-          margin: 0 1rem;
-          width: 50px;
-          border: none;
-          background-color: $jnv__color--dark-blue;
-          color: $jnv__color--white;
-          padding: 6px 10px;
-          font-size: medium;
-          font-weight: 500;
-          text-align: center;
+        .jnv-hero-detail__stock-available--singular {
+          color: $jnv__color--red;
+          margin-top: 10px;
         }
 
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-
-        /* Firefox */
-        input[type=number] {
-          -moz-appearance: textfield;
-        }
-
-        .jnv-hero-detail__quantity-change {
-          cursor: pointer;
-          font-weight: 900;
-          font-size: 25px;
+        .jnv-hero-detail__stock-available--plural {
+          color : $jnv__color--kelly-green;
+          margin-top: 10px;
         }
       }
 

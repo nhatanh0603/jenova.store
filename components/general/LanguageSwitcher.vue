@@ -1,7 +1,7 @@
 <template>
   <div class="jnv-locale-switcher">
     <button ref="localeSwitcher" class="jnv-locale-switcher__choose-button" @click="show = !show">
-      <img :src="localeFlag + '/' + locale + '-flag.svg'" alt="locale flag" width="30" ref="flagImg">
+      <img :src="url.localeFlag + '/' + locale + '-flag.svg'" alt="locale flag" width="30" ref="flagImg">
       <span>{{ $t('locale.' + locale) }}</span>
     </button>
 
@@ -12,7 +12,7 @@
           :key="key" 
           @click="chooseLocale(value)"
         >
-        <img :src="localeFlag + '/' + value + '-flag.svg'" alt="locale flag" width="30">
+        <img :src="url.localeFlag + '/' + value + '-flag.svg'" alt="locale flag" width="30">
         <span>{{ $t('locale.' + value) }}</span>
         </div>
       </div>
@@ -29,7 +29,7 @@ const show = ref(false)
 const localeSwitcher = ref(null)
 const flagImg = ref(null)
 const { availableLocales, locale } = useI18n()
-const { localeFlag } = useRuntimeConfig()
+const { url } = useAppConfig()
 
 const chooseLocale = (value) => {
   if(value !== locale.value) {
@@ -51,7 +51,7 @@ const checkClick = (e) => {
   }
 }) */
 onMounted(() => {
-  flagImg.value.src = localeFlag + '/' + locale.value + '-flag.svg'
+  flagImg.value.src = url.localeFlag + '/' + locale.value + '-flag.svg'
   window.addEventListener('click', checkClick)
 })
 onBeforeUnmount(() => {

@@ -154,7 +154,7 @@
     switch (props.authType) {
       case 'sign_in':
         auth.request('signin', input, props.authType, pending)
-
+        
         break;
       
       case 'sign_up':

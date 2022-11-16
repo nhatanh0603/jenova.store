@@ -5,7 +5,7 @@
     <div class="jnv-hero-detail__role-container">
       <div class="jnv-hero-detail__role-content" v-for="(role, index) in data" :key="index">
         <div class="jnv-hero-detail__role-title">
-          <img :src="'https://api.jenova.store/images/roles/' + index.toLowerCase() + '.png'" :alt="index" class="jnv-hero-detail__role-image">
+          <img :src="url.heroRole + index.toLowerCase() + '.png'" :alt="index" class="jnv-hero-detail__role-image">
 
           <span class="jnv-hero-detail__role-name">{{ index }}</span>
         </div>
@@ -22,6 +22,8 @@
   const props = defineProps({
     data: Object
   })
+
+  const { url } = useAppConfig()
 </script>
   
 <style lang="scss">

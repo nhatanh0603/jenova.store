@@ -1,5 +1,6 @@
 import { storeToRefs } from "pinia"
 import { useInitialDataStore } from "./initialData"
+import { useCartStore } from "./cart"
 
 export const useAuthStore = defineStore('auth', () => {
   const { globalPending } = storeToRefs(useInitialDataStore())
@@ -16,8 +17,8 @@ export const useAuthStore = defineStore('auth', () => {
   })
 
   /* type = signin, signup */
-  function request(type, input, modalName, pending) {
-    useApi('/auth/' + type, {
+  async function request(type, input, modalName, pending) {
+    await useApi('/auth/' + type, {
       method: 'POST',
       body: {
         user_name: input.name,
@@ -38,7 +39,11 @@ export const useAuthStore = defineStore('auth', () => {
 
         if(response.status == 200) {
           localSignIn(response._data.user, response._data.access_token)
-          showAuthModal.value[modalName] = false
+          showAuthModal[modalName] = false
+          await useCartStore().fetchCart()
+          
+          if(useRouter().currentRoute.value.path == '/signin')
+            useRouter().back()
         }
       },
 
@@ -50,8 +55,8 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   /* Gửi request đăng xuất lên server */
-  function signOut() {
-    useApi('/auth/signout', {
+  async function signOut() {
+    await useApi('/auth/signout', {
       method: 'DELETE',
       async onRequest() {
         globalPending.value = true
@@ -64,6 +69,8 @@ export const useAuthStore = defineStore('auth', () => {
       async onResponse({ response }) {
         if(response.status == 200) {          
           localSignOut()
+          useCartStore().cart = {}
+          useRouter().push('/signin')
           globalPending.value = false
         }
       },

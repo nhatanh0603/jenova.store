@@ -19,7 +19,8 @@
   /* MOBILE HEADER */
   .jnv-header {
     .jnv-header__navigation-bar--mobile {
-      display: block;
+      display: flex;
+      align-items: center;
     }
 
     .jnv-header__navigation-bar--desktop {
@@ -61,6 +62,17 @@
       .jnv-hero-detail__ability-info-aghanim {
         white-space: normal !important;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .jnv-header__logo {
+    .jnv-header__full-logo {
+      display: none !important;
+    }
+    .jnv-header__symbol-logo {
+      display: block !important;
     }
   }
 }

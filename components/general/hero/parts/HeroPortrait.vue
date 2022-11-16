@@ -26,10 +26,10 @@
     data: Object
   })
 
-  const { apiHeroPoster, apiHeroVideo } = useRuntimeConfig()
+  const { url } = useAppConfig()
 
-  const posterUrl = apiHeroPoster + props.data.name + '.png'
-  const videoUrl = apiHeroVideo + props.data.name + '.webm'
+  const posterUrl = url.heroPoster + props.data.name + '.png'
+  const videoUrl = url.heroVideo + props.data.name + '.webm'
 </script>
   
 <style lang="scss">

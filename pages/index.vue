@@ -1,6 +1,11 @@
 <template>
-  <Main />
+  <Home />
 </template>
+
 <script setup>
-import Main from '~~/components/Main.vue'
+import Home from '~~/components/Home.vue'
+
+useHead({
+  title: 'Home'
+})
 </script>
