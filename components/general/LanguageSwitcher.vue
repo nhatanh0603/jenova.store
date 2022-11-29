@@ -82,6 +82,7 @@ onBeforeUnmount(() => {
 
     span {
       margin-top: 3px;
+      white-space: nowrap;
     }
 
     &:hover {
@@ -101,7 +102,7 @@ onBeforeUnmount(() => {
     right: 0;
     background-color: $jnv__color--white;
     border-radius: 10px;
-    z-index: 9999;
+    z-index: 10;
     box-shadow: 0 0 6px 0px $jnv__shadow-color--almost-black;
 
     .jnv-locale-switcher__item {

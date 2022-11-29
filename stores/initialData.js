@@ -1,9 +1,5 @@
 export const useInitialDataStore = defineStore('initialData', () => {
-  const initialDataStatus = reactive({
-    all: false,
-    authentication: false,
-    locale: false
-  })   
+  let firstTimeAccess = ref(true)
 
   let globalPending = ref(false)
 
@@ -16,21 +12,15 @@ export const useInitialDataStore = defineStore('initialData', () => {
   let autoFade = 0
 
   /* WATCHER */
-  watch(initialDataStatus, (newValue) => {
-    if(newValue.authentication && newValue.locale) {
-      initialDataStatus.all = true
-    }
-  })
-
-  watch(globalNotification, (newValue) => {
-    if(newValue.show) {
+  watch(() => globalNotification.show, (newValue) => {
+    if(newValue) {
       clearTimeout(autoFade)
 
       autoFade = setTimeout(() => {
         globalNotification.show = false
-      }, 3000)
+      }, 2000)
     }
   })
   
-  return { initialDataStatus, globalPending, globalNotification }
+  return { globalPending, firstTimeAccess, globalNotification }
 })

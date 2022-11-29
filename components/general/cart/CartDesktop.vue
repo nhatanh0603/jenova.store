@@ -59,7 +59,7 @@
       <td class="jnv-cart__item-subtotal">
         <div class="jnv-cart__item-wrapper">
           <img :src="url.misc + 'coin.svg'" alt="" width="20">
-          <span>{{ $toDec(product.price * product.quantity, 2) }}</span>
+          <span>{{ $toDec(product.price * product.quantity, 2, true).toLocaleString() }}</span>
         </div>
       </td>
 
@@ -158,6 +158,7 @@
             font-size: 15px;
             margin-bottom: 7px;
             text-transform: uppercase;
+            white-space: nowrap;
             @include golden-gradient-text;
           }
 

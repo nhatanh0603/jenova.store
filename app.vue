@@ -1,16 +1,14 @@
 <template>
   <div>
-    <Teleport to="body" v-if="!initialData.initialDataStatus.all">
-      <div class="jnv-app__initial-screen">
-        <div class="jnv-app__initial-wrapper">
-          <img :src="url.logoFull" alt="Jenova Store Logo Full">
-          
-          <div class="jnv-loader__wrapper">
-            <span class="jnv-loader--line"></span>
-          </div>
+    <div class="jnv-app__initial-screen" v-if="initialData.firstTimeAccess">
+      <div class="jnv-app__initial-wrapper">
+        <img :src="url.logoFull" alt="Jenova Store Logo Full">
+        
+        <div class="jnv-loader__wrapper">
+          <span class="jnv-loader--line"></span>
         </div>
       </div>
-    </Teleport>
+    </div>
 
     <NuxtLayout v-else>
       <NuxtPage/>
@@ -44,10 +42,8 @@
   onBeforeMount(() => {
     if(localStorage.getItem('locale')) {
       locale.value = localStorage.getItem('locale')
-      initialData.initialDataStatus.locale = true
     }else {
       localStorage.setItem('locale', locale.value)
-      initialData.initialDataStatus.locale = true
     }
   })
 </script>

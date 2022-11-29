@@ -1,8 +1,8 @@
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      toDec: (number, tenths = 1) => {
-        return parseFloat(number).toFixed(tenths)
+      toDec: (number = 0, tenths = 1, accuracy = false) => {
+        return accuracy ? parseFloat(parseFloat(number).toFixed(tenths)) : parseFloat(number).toFixed(tenths)
       },
     }
   }

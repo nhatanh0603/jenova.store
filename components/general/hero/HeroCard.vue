@@ -78,11 +78,11 @@
   @import '@/assets/css/variables.scss';
 
   .jnv-hero-card__container {
-    margin: auto;
+    //margin: auto;
     cursor: pointer;
 
     .jnv-hero-card__wrapper {
-      margin: 2rem;      
+      //margin: 2rem;      
       height: fit-content;
       width: 256px;
       border-radius: $jnv-hero-card__border;

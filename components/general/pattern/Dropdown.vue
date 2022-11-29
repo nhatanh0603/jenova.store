@@ -2,7 +2,11 @@
   <div class="jnv-dropdown" ref="dropdown">
     <div class="jnv-dropdown__selector" @click="toggle = !toggle">
       <slot></slot>
-      <Expand :type="!toggle ? 'more' : 'less'" class="jnv-dropdown__expand-icon" v-if="needExpand"/>
+      <Expand :type="!toggle ? 'more' : 'less'"
+              class="jnv-dropdown__expand-icon"
+              v-if="needExpand"
+              :fill="expandFill"
+      />
     </div>
     
     <Transition name="dropdown-transition">
@@ -10,10 +14,11 @@
         <div :class="preOpsClassName + 'item-wrapper'">
           <div :class="preOpsClassName + 'item-container'">
               <div :class="preOpsClassName + 'item'" 
-                    v-for="(value, key) in dropDownList" 
-                    @click="selected(key)" 
-                    :key="key">
-                    {{ value }}
+                   v-for="(value, key) in dropDownList" 
+                   @click="selected(key)" 
+                   :key="key"
+              >
+                {{ value }}
               </div>
           </div>
         </div>
@@ -30,6 +35,10 @@ const props = defineProps({
   needExpand: {
     type: Boolean,
     default: true
+  },
+  expandFill: {
+    type: String,
+    default: '#328AF1'
   },
   preOpsClassName: {
     type: String,
@@ -63,3 +72,25 @@ onBeforeUnmount(() => {
   window.removeEventListener('click', checkClickOnDropdown)
 })
 </script>
+
+<style lang="scss">
+  .jnv-dropdown {
+    position: relative;
+    z-index: 30;
+    white-space: nowrap;
+
+    &__selector {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .jnv-dropdown__expand-icon {
+        margin-left: 1rem;
+      }
+    }
+
+    &__option {
+      position: absolute;
+    }
+  }
+</style>

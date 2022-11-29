@@ -18,7 +18,7 @@
 
         <div class="jnv-cart__total-value-wrapper">
           <img :src="url.misc + 'coin.svg'" alt="Coin Icon" width="20">
-          <span class="jnv-cart__total-value-display">{{ $toDec(total, 2) }}</span>
+          <span class="jnv-cart__total-value-display">{{ $toDec(total, 2, true).toLocaleString() }}</span>
         </div>
       </div>
 
@@ -41,11 +41,15 @@
     title: 'Cart'
   })
 
+  definePageMeta({
+    middleware: 'authentication'
+  })
+
   const auth = useAuthStore()
   const isMobileWidth = ref(false)
   const { url } = useAppConfig()
   const { cart, checkoutList } = storeToRefs(useCartStore())
-  const { fetchCart, syncCheckoutList } = useCartStore()
+  const { fetchCart, fetchCheckout, syncCheckoutList } = useCartStore()
 
   const isCheckedAll = computed(() => {
     if(cart.value.products == undefined)
@@ -76,7 +80,7 @@
     if(window.innerWidth < 1000)
       isMobileWidth.value = true
 
-    window.addEventListener('resize', mobileWidthTracker)
+    window.addEventListener('resize', mobileWidthTracker)   
   })
 
   onBeforeUnmount(() => {
@@ -103,7 +107,11 @@
   }
 
   const checkout = () => {
-    useRouter().push('/checkout')
+    fetchCheckout()
+    /* if(Object.keys(checkoutList.value).length > 0)
+      useRouter().push('/checkout')
+    else
+      notification('warning', 'You have not selected any items for checkout') */
   }
 </script>
   

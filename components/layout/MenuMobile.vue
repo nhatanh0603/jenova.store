@@ -2,7 +2,7 @@
   <div class="jnv-header__navigation-bar--mobile">
     <Cart />
 
-    <div class="jnv-header__mobile-menu-icon" @click="show = true">
+    <div class="jnv-header__mobile-menu-icon" @click="toggle(true)">
       <HamburgerMenu />
     </div>
 
@@ -13,13 +13,13 @@
                alt="Jenova Store Full Logo"
                class="jnv-header__full-logo"
           >
-          <Xmark width="25" @click="show = false"/>
+          <Xmark width="25" @click="toggle(false)"/>
         </div>
 
         <div class="jnv-header__mobile-menu--mid">
           <AuthActionGroup for-device="mobile"/>
 
-          <MainMenu for-device="mobile" @item-clicked="show = false"/>
+          <MainMenu for-device="mobile" @item-clicked="toggle(false)"/>
         </div>
 
         <div class="jnv-header__mobile-menu--bot">
@@ -40,6 +40,11 @@
 
   const show = ref(false)
   const { url } = useAppConfig()
+
+  const toggle = (status) => {
+    show.value = status
+    document.body.style.overflow = status ?  'hidden' : ''
+  }
 </script>
 
 <style lang="scss">
@@ -47,7 +52,6 @@
 
   .jnv-header__navigation-bar--mobile {
     display: none;
-    margin-left: auto;
 
     .jnv-header__mobile-menu-icon {
       cursor: pointer;      
@@ -62,7 +66,7 @@
     width: 100%;
     height: 100vh;
     background-image: $jnv-app__background--primary;
-    z-index: 9999;
+    z-index: 55;
 
     .jnv-header__mobile-menu--top {
       display: flex;

@@ -42,8 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
           showAuthModal[modalName] = false
           await useCartStore().fetchCart()
           
-          if(useRouter().currentRoute.value.path == '/signin')
-            useRouter().back()
+          notification('success', (type == 'signin' ? 'Welcome Back, ' : 'Welcome To Jenova Store, ') + response._data.user.name)
         }
       },
 
@@ -70,7 +69,8 @@ export const useAuthStore = defineStore('auth', () => {
         if(response.status == 200) {          
           localSignOut()
           useCartStore().cart = {}
-          useRouter().push('/signin')
+          useRouter().push('/')
+          notification('success', 'See You Later, Alligator!')
           globalPending.value = false
         }
       },

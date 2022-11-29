@@ -44,7 +44,7 @@ $jnv-app__background--primary: radial-gradient(circle at 2% 0, #080e17, #365280 
 $jnv-user__menu-background: linear-gradient(90deg, #000000, transparent);
 $jnv-hero-card__body-background: linear-gradient(80deg, #252728 0%, #101415 100%);
 $jnv-main-part__main-part-background: linear-gradient(to right, #00010c, #001f2e);
-$jnv-header__desktop-menu-background: rgb(31, 177, 29, 10%);
+$jnv-header__desktop-menu-background: radial-gradient(circle at 2%, #204c2a, #365280);
 $jnv-hero-detail__background: rgb(0, 0, 0, 30%);
 $jnv__bg-dark-navy--two-side-fade: radial-gradient(circle, $jnv__color--dark-blue, transparent);
 $jnv__bg-success: linear-gradient(90deg, #047c00, #28ab24);

@@ -40,7 +40,7 @@
     <button @click="showAuthModal.sign_up = true"
             :class="forDevice === 'desktop' ? 'jnv-auth__signup-button' : 'jnv-auth__mobile-menu-button'"
     >
-      {{ $t('auth.join_jenova_store') }}
+      {{ $t('auth.sign_up') }}
     </button>
   </div>
 </template>
@@ -194,6 +194,12 @@
   }
 
   /* ACTION GROUP: SIGNIN SIGNUP */
+  .jnv-auth__action-group--desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .jnv-auth__action-group--mobile {
     display: flex;
     flex-direction: column;

@@ -8,6 +8,8 @@
         </NuxtLink>
       </div>
 
+      <Search />
+
       <div class="jnv-header__navigation-bar--desktop">
         <Cart />
         <AuthActionGroup for-device="desktop"/>
@@ -35,6 +37,7 @@ import MenuDesktop from '../layout/MenuDesktop.vue'
 import MenuMobile from '../layout/MenuMobile.vue'
 import Auth from '../authentication/Auth.vue'
 import Cart from '../general/svg/Cart.vue'
+import Search from '../layout/Search.vue'
 import LanguageSwitcher from '../general/LanguageSwitcher.vue'
 import AuthActionGroup from '../authentication/AuthActionGroup.vue'
 import { useAuthStore } from '@/stores/auth'
@@ -66,10 +69,12 @@ const btnTertiSignIn = {
   .jnv-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .jnv-header__logo {
       display: flex;
       cursor: pointer;
+      margin-right: auto;
 
       a {
         display: flex
@@ -77,14 +82,15 @@ const btnTertiSignIn = {
     }
 
     .jnv-header__navigation-bar--desktop {
-      margin-left: auto;
       display: flex;
       align-items: center;
+      margin-left: auto;
     }
   }
 
   .jnv-header__full-logo {
     width: 250px;
+    min-width: 250px;
     max-width: 100%;
   }
 
@@ -96,6 +102,6 @@ const btnTertiSignIn = {
   .jnv-header-sticky {
     position: sticky;
     top: 0;
-    z-index: 9000;
+    z-index: 50;
   }
 </style>

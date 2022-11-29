@@ -41,10 +41,16 @@
     border-radius: 999px;
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+
+    &:hover {
+      box-shadow: 0 0 10px $jnv__color--scarlet;
+    }
 
     .jnv-cart-icon__counter {
       position: absolute;

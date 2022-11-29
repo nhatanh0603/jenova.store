@@ -28,7 +28,7 @@
 
   const isChecked = ref(props.checked)
 
-  watch(props, () => {
+  watch(() => props.checked, () => {
     isChecked.value = props.checked
   })
   

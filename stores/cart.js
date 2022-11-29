@@ -6,6 +6,7 @@ export const useCartStore = defineStore('cart', () => {
   const { globalPending, globalNotification } = storeToRefs(useInitialDataStore())
   const cart = ref({})
   const checkoutList = ref({})
+  const checkoutResponse = ref([])
 
   const cartItemCount = computed(() => {
     if(cart.value.products !== undefined)
@@ -32,9 +33,47 @@ export const useCartStore = defineStore('cart', () => {
 
       async onResponseError({ response }) {
         globalPending.value = false
+        resolveResponse(response)
+      }
+    })
+  }
 
-        if(response.status == 401)
-          useRouter().push('/signin')
+  const fetchCheckout = async () => {
+    await useApi('/cart/checkout', {
+      method: 'POST',
+      body: {
+        checkout: checkoutList.value
+      },
+
+      async onRequest() {
+        globalPending.value = true
+      },
+
+      async onRequestError({ error }) {
+        globalPending.value = false
+        console.error(error)
+      },
+
+      async onResponse({ response }) {
+        if(response.status == 200) {
+          globalPending.value = false
+          checkoutResponse.value = response._data.data
+          useRouter().push('/checkout')
+        }        
+      },
+
+      async onResponseError({ response }) {
+        globalPending.value = false
+        notification('danger', response._data.message)
+
+        if(response.status == 422)
+          notification('warning', 'You have not selected any items for checkout')
+
+        if(response.status == 409) {
+          notification('danger', response._data.message)
+          await fetchCart()
+          syncAllCheckoutList()
+        }
       }
     })
   }
@@ -62,7 +101,6 @@ export const useCartStore = defineStore('cart', () => {
 
       async onResponseError({ response }) {
         fetchCart()
-        resolveResponse(response)
       }
     })
   }
@@ -151,10 +189,28 @@ export const useCartStore = defineStore('cart', () => {
       delete checkoutList.value[product_id]
   }
 
+  const syncAllCheckoutList = () => {
+    cart.value.products.forEach(element => {
+      if(checkoutList.value.hasOwnProperty(element.id))
+        syncCheckoutList(element.id, element.quantity)
+    })
+  }
+
   const updateCheckoutListQuantity = (product_id, quantity) => {
     if(checkoutList.value.hasOwnProperty(product_id))
       syncCheckoutList(product_id, quantity)
   }
 
-  return { cart, checkoutList, cartItemCount, fetchCart, addToCart, updateQuantity, removeItem, syncCheckoutList }
+  return { 
+    cart,
+    checkoutList,
+    checkoutResponse,
+    cartItemCount, 
+    fetchCart, 
+    fetchCheckout, 
+    addToCart, 
+    updateQuantity, 
+    removeItem, 
+    syncCheckoutList 
+  }
 })
