@@ -361,8 +361,8 @@
         display: flex;
         column-gap: 12px;
         cursor : pointer;
-        background-color: rgb(0 0 0 / 60%);
-        box-shadow: 0 0 5px #0c0c0c;
+        background: radial-gradient(#084048, #01061c);
+        box-shadow: 0 0 5px #1a5674;
         padding: 10px 20px;
         margin-right: 50px;
         border-radius: 0 12px 0 12px;
@@ -398,6 +398,10 @@
       img {
         max-width: 600px;
       }
+    }
+
+    .jnv-loader--line {
+      margin: 30px 0;
     }
   }
 

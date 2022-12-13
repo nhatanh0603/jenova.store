@@ -3,8 +3,14 @@
     padding: $jnv__section-p-tnb--mobile $jnv__section-p-lnr--mobile;
   }
 
-  .jnv-main {
-    margin: 0;
+  .jnv-layout__default {
+    .jnv-main-part {
+      background: $jnv-main-part__main-part-background--mobile;
+    }
+
+    .jnv-main {
+      margin: 0;
+    }
   }
 
   /* MENU.VUE */

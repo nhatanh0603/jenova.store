@@ -8,7 +8,7 @@
       </div>
 
       <div :class="'jnv-user__user-menu--' + forDevice">
-        <div :class="'jnv-user__user-menu-item--' + forDevice" @click="itemSelected('profile')">{{ $t('auth.profile') }}</div>
+        <div :class="'jnv-user__user-menu-item--' + forDevice" @click="itemSelected('account')">{{ $t('auth.account') }}</div>
         <div :class="'jnv-user__user-menu-item--' + forDevice" @click="itemSelected('signout')">{{ $t('auth.sign_out') }}</div>
       </div>
     </div>
@@ -16,7 +16,7 @@
     <Dropdown :needExpand="false"
               preOpsClassName="jnv-user-menu__" 
               :dropDownList="{
-                  'profile' : $t('auth.profile'),
+                  'account' : $t('auth.account'),
                   'signout' : $t('auth.sign_out')
                 }"
               @item-selected="itemSelected"
@@ -58,21 +58,28 @@
     }
   })
 
+  const emit = defineEmits(['itemClicked'])
+
   const auth =useAuthStore()
   const { showAuthModal, user } = storeToRefs(auth)
   const { url } = useAppConfig()
 
   const itemSelected = (value) => {
-    //signout, profile
+    //signout, account
     switch (value) {
       case 'signout':
         auth.signOut()
-
+        break;
+      
+      case 'account':
+        useRouter().push('/user/account/profile')
         break;
 
       default:
         break;
     }
+
+    emit('itemClicked')
   }
 </script>
 

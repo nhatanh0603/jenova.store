@@ -1,5 +1,6 @@
 {
   "auth": {
+    "account": "My Account",
     "already_have_account": "Already Have an Account?",
     "create_account": "Create Account",
     "email": "Email",

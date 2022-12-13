@@ -2,14 +2,17 @@
   <div class="jnv-hero-complexity">
     <div :class="['jnv-hero-complexity__diamond-piece',
           level >= 1 ? 'jnv-hero-complexity__diamond-piece--filled' : null]"
+          :style="{width: size, height: size}"
           @click="chooseLevel(1)"
     ></div>
     <div :class="['jnv-hero-complexity__diamond-piece',
           level >= 2 ? 'jnv-hero-complexity__diamond-piece--filled' : null]"
+          :style="{width: size, height: size}"
           @click="chooseLevel(2)"
     ></div>
     <div :class="['jnv-hero-complexity__diamond-piece',
           level == 3 ? 'jnv-hero-complexity__diamond-piece--filled' : null]"
+          :style="{width: size, height: size}"
           @click="chooseLevel(3)"
     ></div>
   </div>
@@ -24,6 +27,10 @@
     editable: {
       type: Boolean,
       default: false
+    },
+    size: {
+      type: String,
+      default: '15px'
     }
   })
 
@@ -48,8 +55,6 @@
     align-items: center;
 
     .jnv-hero-complexity__diamond-piece {
-      width: 15px;
-      height: 15px;
       border: 1px solid white;
       transform: rotateZ(45deg);
     }

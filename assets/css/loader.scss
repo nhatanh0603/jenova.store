@@ -6,6 +6,7 @@
   display: inline-block;
   position: relative;
   background: rgba(255, 255, 255, 0.15);
+  filter: drop-shadow(0 0 5px white);
   overflow: hidden;
 
   &:after {
@@ -13,7 +14,7 @@
     box-sizing: border-box;
     width: 0;
     height: 4.8px;
-    background: $jnv__color--white;
+    background: linear-gradient(90deg, #ffffff 70%, transparent);
     position: absolute;
     top: 0;
     left: 0;

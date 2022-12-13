@@ -66,7 +66,7 @@
   }
 
   const buyNow = () => {
-    console.log('Buy Now')
+    useCartStore().buyNow(props.hero.id, 1)
   }
 
   const addToCart = () => {
@@ -85,7 +85,7 @@
       //margin: 2rem;      
       height: fit-content;
       width: 256px;
-      border-radius: $jnv-hero-card__border;
+      //border-radius: $jnv-hero-card__border;
       box-shadow: 0px 0px 5px 1px $jnv__shadow-color--almost-black;
       transition: transform 0.3s linear, box-shadow 1s linear;
 
@@ -100,7 +100,7 @@
 
           img {
             width: $jnv-hero-card__width;
-            border-radius: $jnv-hero-card__border $jnv-hero-card__border 0 0;
+            //border-radius: $jnv-hero-card__border $jnv-hero-card__border 0 0;
           }
         }
 
@@ -187,13 +187,13 @@
           .jnv-hero-card__button--buy-now {
             //background: linear-gradient(to right, $jnv__color--black, $jnv__color--scarlet);
             background-color: $jnv__color--scarlet;
-            border-radius: 0 0 0 $jnv-hero-card__border;
+            //border-radius: 0 0 0 $jnv-hero-card__border;
           }
 
           .jnv-hero-card__button--add-to-cart {
             //background: linear-gradient(to right, $jnv__color--black, $jnv__color--kelly-green);
             background-color: $jnv__color--kelly-green;
-            border-radius: 0 0 $jnv-hero-card__border 0;
+            //border-radius: 0 0 $jnv-hero-card__border 0;
           }
         }
       }

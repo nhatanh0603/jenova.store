@@ -1,0 +1,139 @@
+<template>
+  <div class="jnv-test">
+    <div @click="change('prev')">Previous</div>
+    <div name="list" tag="div" class="jnv-test__block">
+      <div v-for="num, index in display" :key="num.key"
+          :class="[
+            'jnv-test__block-item',
+            index == 1 || index == 3 ? 'active' : 'inactive',
+            index == 2 ? isComing : null
+          ]"
+      >
+        {{ num.value }}
+      </div>
+    </div>
+    <div @click="change('next')">Next</div>
+  </div>
+</template>
+  
+<script setup>
+  const isComing = ref('coming-small')
+
+  const array = [
+    {key: 1, value: 'a'},
+    {key: 2, value: 'b'},
+    {key: 3, value: 'c'},
+    {key: 4, value: 'd'},
+    {key: 5, value: 'e'},
+    {key: 6, value: 'f'}
+  ]
+
+  const display = ref([
+    {key: 1, value: 'a'},
+    {key: 2, value: 'b'},
+    {key: 3, value: 'c'}
+  ])
+  const position = ref(1)
+
+  const change = (type) => {
+    isComing.value = (isComing.value == 'coming-small' ? 'coming-original' : 'coming-small')
+
+    switch (type) {
+      case 'next':
+        if(position.value == array.length - 1)
+          position.value = 0 
+        else
+          position.value++
+
+        var next = position.value + 1
+
+        if(position.value == array.length - 1)
+          next = 0
+
+        display.value.shift()
+        display.value.push(array[next])
+        // display.value[0] = array[position.value - 1]
+        // display.value[1] = array[position.value]
+        // display.value[2] = array[next]
+
+        break;
+    
+      default:
+        if(position.value == 0)
+          position.value = array.length - 1
+        else
+          position.value--
+
+        var prev = position.value - 1
+
+        if(position.value == 0)
+          prev = array.length - 1
+
+        display.value.pop()
+        display.value.unshift(array[prev])
+
+        break;
+    }
+  }
+</script>
+  
+<style lang="scss">
+  .jnv-test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    cursor: pointer;
+
+    .jnv-test__block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 10px;
+
+      .jnv-test__block-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        transition: all 1s ease;
+      }
+
+      .jnv-test__block-item.inactive {
+        transform: scale(0.8);
+        background: red;
+      }
+
+      .jnv-test__block-item.active {
+        background: blue;
+        transform: scale(1);
+      }
+
+      .coming-small {
+        transform: scale(0.8) !important;
+      }
+
+      .coming-original {
+        transform: scale(1) !important;
+      }
+    }
+  }
+
+  .list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 10s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+</style>

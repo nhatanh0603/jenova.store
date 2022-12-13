@@ -31,8 +31,8 @@
             </div>
           </div>
 
-          <div class="jnv-auth__error-display--standard" v-if="input.errors.user_name">
-            <span>{{ input.errors.user_name[0] }}</span>
+          <div class="jnv-auth__error-display--standard" v-if="input.errors.username">
+            <span>{{ input.errors.username[0] }}</span>
           </div>
         </div>
 

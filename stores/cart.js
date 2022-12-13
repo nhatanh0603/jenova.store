@@ -38,11 +38,25 @@ export const useCartStore = defineStore('cart', () => {
     })
   }
 
-  const fetchCheckout = async () => {
+  const fetchCheckout = async (buyNow = false) => {
+    let sortable = []
+
+    if(!buyNow) {
+      /* Sắp xếp lại thứ tự checkoutList */
+      cart.value.products.forEach(element => {
+        if(checkoutList.value.hasOwnProperty(element.id)) {
+          sortable.push({ 'id' : element.id, 'quantity': checkoutList.value[element.id]})
+        }
+      })
+    } else {
+      var key = Object.keys(checkoutList.value)[0]
+      sortable.push({ 'id' : key, 'quantity': checkoutList.value[key]})
+    }
+
     await useApi('/cart/checkout', {
       method: 'POST',
       body: {
-        checkout: checkoutList.value
+        checkout: sortable
       },
 
       async onRequest() {
@@ -103,6 +117,13 @@ export const useCartStore = defineStore('cart', () => {
         fetchCart()
       }
     })
+  }
+
+  const buyNow = (product_id, quantity) => {
+    checkoutList.value = {}
+    checkoutList.value[product_id] = quantity
+
+    fetchCheckout(true)
   }
 
   const updateQuantity = async (product_id, quantity) => {
@@ -208,7 +229,8 @@ export const useCartStore = defineStore('cart', () => {
     cartItemCount, 
     fetchCart, 
     fetchCheckout, 
-    addToCart, 
+    addToCart,
+    buyNow,
     updateQuantity, 
     removeItem, 
     syncCheckoutList 

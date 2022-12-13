@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <button class="jnv-checkout__place-order-button">Place Order</button>
+      <button class="jnv-checkout__place-order-button" @click="placeOrder">Place Order</button>
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@
 <script setup>
   import { useAuthStore } from '@/stores/auth'
   import { useCartStore } from '@/stores/cart'
+  import { useOrderStore } from '@/stores/order'
   import { storeToRefs } from 'pinia'
   import CheckoutDesktop from '@/components/general/checkout/CheckoutDesktop.vue'
   import CheckoutMobile from '@/components/general/checkout/CheckoutMobile.vue'
@@ -69,6 +70,10 @@
       isMobileWidth.value = true
     else
       isMobileWidth.value = false
+  }
+
+  const placeOrder = () => {
+    useOrderStore().place(checkoutResponse.value)
   }
 </script>
   

@@ -1,41 +1,48 @@
 <template>
-  <div class="jnv-cart" v-if="auth.user.signedIn">
-    <div class="jnv-cart__item-wrapper">
-      <CartMobile v-if="isMobileWidth"/>
-      <CartDesktop v-else/>
-    </div>
-    
-    <div class="jnv-cart__total">
-      <div class="jnv-cart__select-all">
-        <CheckBox @box-click="selectAllCart"
-                  :checked="isCheckedAll"
-                  label="Select All"
-        />
+  <div>
+    <div class="jnv-cart" v-if="!isCartEmpty">
+      <div class="jnv-cart__item-wrapper">
+        <CartMobile v-if="isMobileWidth"/>
+        <CartDesktop v-else/>
       </div>
+      
+      <div class="jnv-cart__total">
+        <div class="jnv-cart__select-all">
+          <CheckBox @box-click="selectAllCart"
+                    :checked="isCheckedAll"
+                    label="Select All"
+          />
+        </div>
 
-      <div class="jnv-cart__total-value">
-        <span class="jnv-cart__total-value-title">Total</span>
+        <div class="jnv-cart__total-value">
+          <span class="jnv-cart__total-value-title">Total</span>
 
-        <div class="jnv-cart__total-value-wrapper">
-          <img :src="url.misc + 'coin.svg'" alt="Coin Icon" width="20">
-          <span class="jnv-cart__total-value-display">{{ $toDec(total, 2, true).toLocaleString() }}</span>
+          <div class="jnv-cart__total-value-wrapper">
+            <img :src="url.misc + 'coin.svg'" alt="Coin Icon" width="20">
+            <span class="jnv-cart__total-value-display">{{ $toDec(total, 2, true).toLocaleString() }}</span>
+          </div>
+        </div>
+
+        <div class="jnv-cart__checkout">
+          <button class="jnv-cart__checkout-button" @click="checkout">Checkout</button>
         </div>
       </div>
-
-      <div class="jnv-cart__checkout">
-        <button class="jnv-cart__checkout-button" @click="checkout">Checkout</button>
-      </div>
     </div>
+
+  <CuteAstronaut first-message="Your cart is empty!"
+                 second-message="Looks like you have not added anything to you cart. Go ahead & explore top categories."
+                 :background="true" v-else
+  />
   </div>
 </template>
   
 <script setup>
+  import CuteAstronaut from '@/components/general/CuteAstronaut.vue'
   import CartDesktop from '~~/components/general/cart/CartDesktop.vue'
   import CartMobile from '~~/components/general/cart/CartMobile.vue'
   import CheckBox from '~~/components/general/CheckBox.vue'
   import { useCartStore } from '@/stores/cart'
   import { storeToRefs } from 'pinia'
-  import { useAuthStore } from '@/stores/auth'
 
   useHead({
     title: 'Cart'
@@ -45,11 +52,14 @@
     middleware: 'authentication'
   })
 
-  const auth = useAuthStore()
   const isMobileWidth = ref(false)
   const { url } = useAppConfig()
   const { cart, checkoutList } = storeToRefs(useCartStore())
   const { fetchCart, fetchCheckout, syncCheckoutList } = useCartStore()
+
+  const isCartEmpty = computed(() => {
+    return cart.value.products ? (cart.value.products.length > 0 ? false : true) : true
+  })
 
   const isCheckedAll = computed(() => {
     if(cart.value.products == undefined)
@@ -108,10 +118,6 @@
 
   const checkout = () => {
     fetchCheckout()
-    /* if(Object.keys(checkoutList.value).length > 0)
-      useRouter().push('/checkout')
-    else
-      notification('warning', 'You have not selected any items for checkout') */
   }
 </script>
   

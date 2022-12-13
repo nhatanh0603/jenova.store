@@ -230,7 +230,7 @@
           display: flex;
           cursor: pointer;
           margin: 0 15px 15px;
-          box-shadow: 0 0 9px $jnv__shadow-color--almost-black;
+          filter: drop-shadow(0 0 3px #0c0c0c);
 
           &:first-child {
             margin: 15px;
@@ -353,7 +353,7 @@
               .jnv-header__search-result-item {
                 display: flex;
                 margin: 0 10px 20px;
-                box-shadow: 0 0 9px $jnv__shadow-color--almost-black;
+                filter: drop-shadow(0 0 5px #0c0c0c);
                 cursor: pointer;
 
                 &:first-child {

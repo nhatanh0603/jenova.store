@@ -21,7 +21,7 @@ export const useAuthStore = defineStore('auth', () => {
     await useApi('/auth/' + type, {
       method: 'POST',
       body: {
-        user_name: input.name,
+        username: input.name,
         email: input.email,
         password: input.password
       },

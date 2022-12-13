@@ -1,5 +1,6 @@
 {
   "auth": {
+    "account": "Tài Khoản Của Tôi",
     "already_have_account": "Có Tài Khoản Rồi Hả?",
     "create_account": "Tạo Tài Khoản",
     "email": "E-mail",

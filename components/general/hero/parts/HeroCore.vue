@@ -36,7 +36,7 @@
       </div>
 
       <div class="jnv-hero-detail__action-group">
-        <button class="jnv-hero-detail__button jnv-hero-detail__button--buy-now">
+        <button class="jnv-hero-detail__button jnv-hero-detail__button--buy-now" @click="buyNow">
           Buy Now</button>
         <button class="jnv-hero-detail__button jnv-hero-detail__button--add-to-cart" @click="addToCart">
           Add To Cart
@@ -61,6 +61,10 @@
   
   const { url } = useAppConfig()
   const quantity = ref(1)
+
+  const buyNow = () => {
+    useCartStore().buyNow(props.data.id, quantity.value)
+  }
 
   const addToCart = () => {
     useCartStore().addToCart(props.data.id, quantity.value)

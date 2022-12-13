@@ -8,7 +8,7 @@
       <path d="M13.23321,49.81258a4.30912,4.30912,0,1,0,4.30868-4.30942A4.30838,4.30838,0,0,0,13.23321,49.81258Z" transform="translate(0 -9.87903)" :fill="fill"/>
     </svg>
 
-    <span class="jnv-cart-icon__counter" v-if="useAuthStore().user.signedIn">
+    <span class="jnv-cart-icon__counter" v-if="isCartReady">
       {{ useCartStore().cartItemCount }}
     </span>
   </NuxtLink>
@@ -27,6 +27,12 @@
       type: String,
       default: '#fff'
     }
+  })
+
+  const isCartReady = computed(() => {
+    if(useAuthStore()?.user?.signedIn)
+      return useCartStore()?.cartItemCount > 0 ? true : false
+    return false
   })
 </script>
   

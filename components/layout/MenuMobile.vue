@@ -17,7 +17,7 @@
         </div>
 
         <div class="jnv-header__mobile-menu--mid">
-          <AuthActionGroup for-device="mobile"/>
+          <AuthActionGroup for-device="mobile" @item-clicked="toggle(false)"/>
 
           <MainMenu for-device="mobile" @item-clicked="toggle(false)"/>
         </div>
