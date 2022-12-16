@@ -28,7 +28,8 @@
 
             <AttackType :is-active="filter.toggle['AttackType']" @on-click="changeOptionalParams"/>
 
-            <Complexity :is-active="filter.toggle['Complexity']" @on-click="changeOptionalParams"/>
+            <Complexity :is-active="filter.toggle['Complexity']" @on-click="changeOptionalParams"
+            />
           </div>
         </div>
 
@@ -49,9 +50,7 @@
     
     <span class="jnv-loader--line" v-if="isLoading.continue"></span>
 
-    <div class="jnv-heroes__nothing-found" v-if="isLoading.nothing">
-      <img :src="url.misc + 'curiosity-search.svg'" alt="Nothing Found">
-    </div>
+    <CuriositySearch :have-message="false" v-if="isLoading.nothing"/>
   </div>
 </template>
   
@@ -61,8 +60,8 @@
   import AttackType from './parts/filter/AttackType.vue'
   import Complexity from './parts/filter/Complexity.vue'
   import Arrow from '../svg/Arrow.vue'
+  import CuriositySearch from '../CuriositySearch.vue'
 
-  const { url } = useAppConfig()
   const heroes = ref({})
   const isLoading = ref({
     initiate: false,
@@ -329,8 +328,8 @@
             margin: 0 5.4px;
 
             .jnv-hero-complexity__diamond-piece {
-              width: 26px;
-              height: 26px;
+              width: 26px !important;
+              height: 26px !important;
               cursor : pointer;
             }
 

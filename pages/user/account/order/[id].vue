@@ -61,14 +61,16 @@
     </div>
   </div>
 
-  <div class="jnv-user__od-not-found" v-else>
-    <span>Order not found</span>
-    <img :src="url.misc + 'curiosity-search.svg'" alt="Curiosity Search">
-  </div>
+  <CuriositySearch first-message="No order found." v-else
+                   second-message="Please check your order."
+                   :have-background="false"
+                   max-width="333px"
+  />
 </template>
   
 <script setup>
   import Attribute from '@/components/general/svg/attributes/Attribute.vue'
+  import CuriositySearch from '@/components/general/CuriositySearch.vue'
   import Arrow from '@/components/general/svg/Arrow.vue'
   import { useOrderStore } from '@/stores/order'
   import { storeToRefs } from 'pinia'
@@ -244,24 +246,6 @@
           margin-left: 6px;
         }
       }
-    }
-  }
-
-  .jnv-user__od-not-found {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 40px;
-
-    span {
-      font-size: 22px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    img {
-      max-width: 333px;
     }
   }
 

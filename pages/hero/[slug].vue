@@ -1,8 +1,8 @@
 <template>
-  <div class="jnv-hero-detail">
+  <div class="jnv-hero-detail" v-if="!Object.keys(error).length">
     <span class="jnv-loader--line" v-if="!ready" ></span>
 
-    <div class="jnv-hero-detail__container" v-else-if="ready">
+    <div class="jnv-hero-detail__container" v-else>
       <!-- PRIMARY AREA -->
       <div class="jnv-hero-detail__section">
         <HeroPotrait :data="heroPortraitData"/>
@@ -22,11 +22,11 @@
         <HeroStat :data="heroStatData"/>
       </div>
     </div>
-
-    <div class="jnv-error__display" v-else>
-      {{ error.statusMessage }}
-    </div>
   </div>
+
+  <CuriositySearch first-message="Uh oh. No products found." v-else
+                   second-message="Your search did not match any products. Please try again."           
+  />
 </template>
   
 <script setup>
@@ -36,6 +36,7 @@
   import HeroStat from '@/components/general/hero/parts/HeroStat.vue'
   import HeroAbilities from '@/components/general/hero/parts/HeroAbilities.vue'
   import HeroHistory from '@/components/general/hero/parts/HeroHistory.vue'
+  import CuriositySearch from '@/components/general/CuriositySearch.vue'
 
   const hero = ref({})
   const heroPortraitData = ref({})
@@ -44,6 +45,7 @@
   const heroStatData = ref({})
   const ready = ref(false)
   const error = ref({})
+  const { url } = useAppConfig()
 
   onMounted(() => {
     loadHero()
@@ -119,8 +121,11 @@
       },
 
       async onResponseError({ response }) {
-        error.value = response._data.error
-        ready.value = false
+        if(response.status == 404) {
+          error.value = response._data.error
+          notification('warning', 'Your search did not match any products. Please try again.')
+        } else
+          notification('danger', response._data.message)
       }
     })
   }

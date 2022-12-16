@@ -23,7 +23,8 @@
   "content": {
     "page": {
       "about": {
-        "description": "Trang Web này được tạo ra với mục đích làm demo. Chúng tôi không mua bán bất cứ vật phẩm nào. Cảm ơn mọi người đã ghé thăm!"
+        "introduction": "Chào mọi người, Tôi là Nhất Anh. Tôi tạo website này với phần Back-end API sử dụng Laravel Framework 9 và phần Front-end sử dụng Nuxt 3 Framework. Website này làm với mục đích vui vẻ là chủ yếu nên không mua bán bất cứ thứ gì cả. Cảm ơn mọi người đã ghé thăm.",
+        "my_skills": "Kỹ Năng Của Tôi"
       }
     }
   },

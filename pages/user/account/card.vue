@@ -317,6 +317,11 @@
   .card-enter-from, .card-leave-to {
     opacity: 0;
     transform: scale(0.5) !important;
+    z-index: -2 !important;
+  }
+
+  .card-leave-from {
+    z-index: -2 !important;
   }
 
   .card-leave-active {

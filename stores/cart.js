@@ -7,6 +7,7 @@ export const useCartStore = defineStore('cart', () => {
   const cart = ref({})
   const checkoutList = ref({})
   const checkoutResponse = ref([])
+  const isBuyNow = ref(false)
 
   const cartItemCount = computed(() => {
     if(cart.value.products !== undefined)
@@ -40,6 +41,7 @@ export const useCartStore = defineStore('cart', () => {
 
   const fetchCheckout = async (buyNow = false) => {
     let sortable = []
+    isBuyNow.value = buyNow
 
     if(!buyNow) {
       /* Sắp xếp lại thứ tự checkoutList */
@@ -226,6 +228,7 @@ export const useCartStore = defineStore('cart', () => {
     cart,
     checkoutList,
     checkoutResponse,
+    isBuyNow,
     cartItemCount, 
     fetchCart, 
     fetchCheckout, 

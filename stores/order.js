@@ -11,7 +11,8 @@ export const useOrderStore = defineStore('order', () => {
     await useApi('/order/place', {
       method: 'POST',
       body: {
-        order: checkoutRes
+        order: checkoutRes,
+        buy_now: cart.isBuyNow
       },
 
       async onRequest() {
@@ -19,16 +20,16 @@ export const useOrderStore = defineStore('order', () => {
       },
 
       async onRequestError({ error }) {
-        notification('danger', error)
         ini.globalPending = false
+        notification('danger', error)
       },
 
       async onResponse({ response }) {
         if(response.status == 200) {
           order.value = await response._data.order
-          ini.globalPending = false
           await cart.fetchCart()
           useRouter().push('/order')
+          ini.globalPending = false
         }
       },
 

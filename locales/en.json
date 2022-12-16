@@ -23,7 +23,8 @@
   "content": {
     "page": {
       "about": {
-        "description": "This website was created for demo purposes only. We do not buy or sell any items. Thank you for your visit!"
+        "introduction": "Hello, I'm Nhat Anh, I created this site using Laravel Framework 9 as Back-end API and Nuxt 3 Framework as Front-end. This site is for fun purpose, so I do not buy or sell any items. Thank you for your visit.",
+        "my_skills": "My Skills"
       }
     }
   },

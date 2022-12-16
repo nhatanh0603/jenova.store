@@ -8,9 +8,9 @@
         <HeroCard v-for="(hero, index) in result" :hero="hero" :key="index"/>
       </div>
 
-      <div class="jnv-search__page-nothing" v-else>
-        <img :src="url.misc + 'curiosity-search.svg'" alt="Curiosity Search">
-      </div>
+      <CuriositySearch first-message="No results found." v-else
+                   second-message="We couldn't find what you searched for. Try searching again."           
+      />
     </div>
     
 
@@ -20,10 +20,10 @@
   
 <script setup>
   import HeroCard from '@/components/general/hero/HeroCard.vue'
+  import CuriositySearch from '@/components/general/CuriositySearch.vue'
 
   const result = ref({})
   const loading = ref(false)
-  const { url } = useAppConfig()
 
   onMounted(() => {
     fetch()
