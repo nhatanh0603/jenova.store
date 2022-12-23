@@ -4,7 +4,12 @@
         @mask-was-clicked="showAuthModal[authType] = false" 
         @close="showAuthModal[authType] = false"
   >
-    <div class="jnv-auth__container">
+    <div class="jnv-auth__email-reset-password-success" v-if="forgotPasswordSuccess.status">
+      <GlobalNotificationIcon type="success"/>
+      <div>{{ $t('auth.password_reset_link_sent') }}</div>
+    </div>
+
+    <div class="jnv-auth__container" v-else>
       <!-- Title -->
       <h1 class="jnv-auth__title">
         {{ $t("auth." + authType) }}
@@ -111,9 +116,10 @@
 </template>
   
 <script setup>
-  import Modal from '/components/general/pattern/Modal.vue'
-  import Cancel from '/components/general/svg/Cancel.vue'
-  import Loader from '/components/general/Loader.vue'
+  import Modal from '../general/pattern/Modal.vue'
+  import Cancel from '../general/svg/Cancel.vue'
+  import Loader from '../general/Loader.vue'
+  import GlobalNotificationIcon from '../general/svg/GlobalNotificationIcon.vue'
   import { useAuthStore } from '@/stores/auth'
   import { storeToRefs } from 'pinia'
 
@@ -133,6 +139,10 @@
   const auth = useAuthStore()
   const { showAuthModal } = storeToRefs(auth)
   const showPassword = ref(true)
+  const forgotPasswordSuccess = ref({
+    status: false,
+    message: ''
+  })
 
   const input = reactive({
     name: '',
@@ -147,6 +157,8 @@
     if(newValue == false) {
       clearInput('all')
       pending.value = false
+      forgotPasswordSuccess.value.status = false
+      forgotPasswordSuccess.value.message = ''
     }
   })
 
@@ -163,6 +175,7 @@
         break;
 
       default:
+        auth.forgotPassword(input, pending, forgotPasswordSuccess)
         break;
     }
   }

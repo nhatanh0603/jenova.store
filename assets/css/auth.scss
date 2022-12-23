@@ -21,6 +21,24 @@
   }
 }
 
+.jnv-auth__email-reset-password-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #006200;
+
+  .jnv-svg__notification-icon {
+    background-color: green;
+    border-radius: 99px;
+    width: 70px;
+    min-width: 70px;
+    height: 70px;
+  }
+}
+
 .jnv-auth__container {
   max-width: 22rem;
   margin: auto;

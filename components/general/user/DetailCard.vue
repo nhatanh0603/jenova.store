@@ -18,18 +18,21 @@
 
       <table class="jnv-detail-card__hero-base">
         <tr>
-          <th>Attack Type</th>
+          <th>{{ $t('hero.attack_type') }}</th>
 
           <td>
             <div class="jnv-detail-card__herobase-value">
               <Melee v-if="data.attack_capability == 1" width="25"/>
               <Ranged v-else width="25"/>
+              <span class="jnv-detail-card__hero-attack-type">
+                {{ data.attack_capability == 1 ? $t('hero.melee') : $t('hero.ranged')}}
+              </span>
             </div>
           </td>
         </tr>
 
         <tr>
-          <th>Complexity</th>
+          <th>{{ $t('hero.complexity') }}</th>
 
           <td>
             <div class="jnv-detail-card__herobase-value">
@@ -39,7 +42,7 @@
         </tr>
 
         <tr>
-          <th>Damage</th>
+          <th>{{ $t('hero.damage') }}</th>
 
           <td>
             <div class="jnv-detail-card__herobase-value">{{ data.damage_min + ' - ' + data.damage_max }}</div>
@@ -47,7 +50,7 @@
         </tr>
 
         <tr>
-          <th>Armor</th>
+          <th>{{ $t('hero.armor') }}</th>
 
           <td>
             <div class="jnv-detail-card__herobase-value">{{ data.armor }}</div>
@@ -56,13 +59,13 @@
       </table>
 
       <div class="jnv-detail-card__role">
-        <div v-for="(role, index) in roles" :key="index" :title="role">
+        <div v-for="(role, index) in roles" :key="index" :title="$t('hero.role.' + role)">
           <img :src="url.heroRole + role + '.png'" :alt="role" width="30">
         </div>
       </div>
 
       <div class="jnv-detail-card__unit">
-        <span>{{ data.unit + (data.unit == 1 ? ' unit' : ' units') }}</span>
+        <span>{{ data.unit + ' ' + (data.unit == 1 ? $t(localePath + 'unit') : $t(localePath + 'units')) }}</span>
       </div>
     </div>
   </div>
@@ -84,6 +87,8 @@
       default: 0
     }
   })
+
+  const localePath = 'content.page.account.card.'
 
   const roles = computed(() => {
     var temp = []
@@ -169,6 +174,12 @@
               align-items: center;
               font-weight: 600;
               height: 30px;
+              
+              .jnv-detail-card__hero-attack-type {
+                margin-left: 7px;
+                text-transform: uppercase;
+                font-size: 13px;
+              }
 
               .jnv-hero-complexity {
                 width: 95px;

@@ -5,7 +5,7 @@
         <div class="jnv-hero-attributes__name">
           <div class="jnv-hero-attributes__name-wrapper">
             <Strength />
-            <span>Strength</span>
+            <span>{{ $t('hero.strength') }}</span>
           </div>          
         </div>
 
@@ -22,7 +22,7 @@
         <div class="jnv-hero-attributes__name">
           <div class="jnv-hero-attributes__name-wrapper">
             <Agility />
-            <span>Agility</span>
+            <span>{{ $t('hero.agility') }}</span>
           </div>          
         </div>
 
@@ -39,7 +39,7 @@
         <div class="jnv-hero-attributes__name">
           <div class="jnv-hero-attributes__name-wrapper">
             <Intelligence />
-            <span>Intelligence</span>
+            <span>{{ $t('hero.intelligence') }}</span>
           </div>          
         </div>
 
@@ -90,6 +90,10 @@
 
             span {
               margin: 0 40px 0 10px;
+              white-space: nowrap;
+              font-size: 16px;
+              font-weight: 500;
+              color: #c9c9c9;
             }
           }
         }
@@ -101,7 +105,7 @@
 
           .jnv-hero-attributes__value-wrapper {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 20px;
             position: relative;
 
             .jnv-hero-attributes__value-bonus {

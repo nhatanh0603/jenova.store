@@ -17,7 +17,7 @@
       </div>
 
       <div class="jnv-simple-card__unit">
-        <span>{{ data.unit + (data.unit > 1 ? ' units' : ' unit') }}</span>
+        <span>{{ data.unit + ' ' + (data.unit == 1 ? $t(localePath + 'unit') : $t(localePath + 'units')) }}</span>
       </div>
     </div>
   </div>
@@ -37,6 +37,8 @@
       default: 0
     }
   })
+
+  const localePath = 'content.page.account.card.'
 
   const primaryAttribute = computed(() => {
     return ('jnv-simple-card__' + (props.data.primary_attr == 0 ? 'strength'

@@ -20,7 +20,7 @@
   
 <script setup>
   useHead({
-    title: 'About'
+    title: 'About - NuxtJS Framework, Laravel Framework'
   })
  
   const skills = [

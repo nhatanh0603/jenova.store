@@ -14,7 +14,7 @@
                 <div class="jnv-user__account-tab-head-icon">
                   <component :is="tab.icon"></component>
                 </div>
-                <span class="jnv-user__account-tab-head-name">{{ tab.name }}</span>
+                <span class="jnv-user__account-tab-head-name">{{ $t('content.page.account.' + tab.name + '.title') }}</span>
               </div>
             </div>
 
@@ -39,10 +39,10 @@
   import GameCard from '@/components/general/svg/GameCard.vue'
   
   const tabs = [
-    { 'page': '/user/account/profile', 'name': 'My Profile', 'icon': AccountCircle },
-    { 'page': '/user/account/order', 'name': 'My Purchase', 'icon': Paid },
-    { 'page': '/user/account/card', 'name': 'My Cards', 'icon': GameCard },
-    { 'page': '/user/account/change-password', 'name': 'Change Password', 'icon': SyncLock }
+    { 'page': '/user/account/profile', 'name': 'profile', 'icon': AccountCircle },
+    { 'page': '/user/account/order', 'name': 'order', 'icon': Paid },
+    { 'page': '/user/account/card', 'name': 'card', 'icon': GameCard },
+    { 'page': '/user/account/change-password', 'name': 'change_password', 'icon': SyncLock }
   ]
 </script>
 

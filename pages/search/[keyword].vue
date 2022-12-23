@@ -1,6 +1,6 @@
 <template>
   <div class="jnv-search__page">
-    <div class="jnv-search__page-title"><span>Search result for </span>
+    <div class="jnv-search__page-title"><span>{{ $t('content.page.search.search_result_for') + ' ' }}</span>
       <span class="jnv-search__page-keyword">{{ $route.params.keyword }}</span></div>
 
     <div v-if="!loading">
@@ -8,8 +8,8 @@
         <HeroCard v-for="(hero, index) in result" :hero="hero" :key="index"/>
       </div>
 
-      <CuriositySearch first-message="No results found." v-else
-                   second-message="We couldn't find what you searched for. Try searching again."           
+      <CuriositySearch :first-message="$t('content.page.search.not_found.message_one')" v-else
+                   :second-message="$t('content.page.search.not_found.message_two')"           
       />
     </div>
     
@@ -21,6 +21,10 @@
 <script setup>
   import HeroCard from '@/components/general/hero/HeroCard.vue'
   import CuriositySearch from '@/components/general/CuriositySearch.vue'
+
+  useHead({
+    title: 'Search'
+  })
 
   const result = ref({})
   const loading = ref(false)

@@ -11,6 +11,7 @@
     "hide": "Ẩn",
     "or_sign_in": "Hoặc Đăng Nhập",
     "password": "Mật Khẩu",
+    "password_reset_link_sent": "Chúng tôi đã gửi cho bạn một email chứa liên kết đặt lại mật khẩu!",
     "profile": "Hồ Sơ",
     "reset": "Đặt Lại Mật Khẩu",
     "show": "Hiện",
@@ -21,10 +22,143 @@
   },
 
   "content": {
+    "general": {
+      "add_to_cart": "Thêm Vào Giỏ",
+      "buy_now": "Mua Ngay",
+      "only_one_left": "Chỉ còn 1 sản phẩm",
+      "pieces_available": "sản phẩm có sẵn",
+      "price": "Giá",
+      "start_shopping": "Bắt Đầu Mua Sắm"
+    },
     "page": {
       "about": {
-        "introduction": "Chào mọi người, Tôi là Nhất Anh. Tôi tạo website này với phần Back-end API sử dụng Laravel Framework 9 và phần Front-end sử dụng Nuxt 3 Framework. Website này làm với mục đích vui vẻ là chủ yếu nên không mua bán bất cứ thứ gì cả. Cảm ơn mọi người đã ghé thăm.",
+        "introduction": "Chào mọi người, Tôi là Nhất Anh. Tôi tạo website này với phần Back-end API sử dụng Laravel 9 Framework và phần Front-end sử dụng Nuxt 3 Framework. Website này làm với mục đích vui vẻ là chủ yếu nên tôi không mua bán bất cứ thứ gì cả. Cảm ơn mọi người đã ghé thăm.",
         "my_skills": "Kỹ Năng Của Tôi"
+      },
+      "account": {
+        "card": {
+          "not_found": {
+            "first_message": "Không tìm thấy thẻ tướng nào.",
+            "second_message": "Có vẻ như bạn vẫn chưa đưa ra được lựa chọn..."
+          },
+          "title": "Thẻ Tướng",
+          "unit": "thẻ",
+          "units": "thẻ"
+        },
+        "change_password": {
+          "change_your_password": "Đổi Mật Khẩu",
+          "hide": "Ẩn",
+          "new_password": "Mật Khẩu Mới",
+          "new_password_confirmation": "Xác Nhận Mật Khẩu Mới",
+          "old_password": "Mật Khẩu Hiện Tại",
+          "placeholder": {
+            "new_password": "Nhập Mật Khẩu Mới",
+            "new_password_confirmation": "Nhập Mật Khẩu Mới",
+            "old_password": "Nhập Mật Khẩu Hiện Tại"
+          },
+          "show": "Hiện",
+          "title": "Đổi Mật Khẩu"
+        },
+        "order": {
+          "back": "Trở Lại",
+          "load_more": "Hiện Thêm",
+          "not_found": {
+            "detail": {
+              "first_message": "Không tìm thấy đơn hàng.",
+              "second_message": "Vui lòng kiểm tra lại đơn hàng của bạn."
+            },
+            "first_message": "Chưa có đơn hàng nào.",
+            "second_message": "Có vẻ như bạn vẫn chưa đưa ra được lựa chọn..."
+          },
+          "order_id": "ID Đơn Hàng.",
+          "order_total": "Tổng Đơn Hàng",
+          "placed_at": "Đặt Lúc",
+          "products": "Các Sản Phẩm",
+          "title": "Đơn Mua"
+        },
+        "profile": {
+          "address": "Địa Chỉ",
+          "birthday": "Ngày Sinh",
+          "email": "Email",
+          "female": "Nữ",
+          "fullname": "Tên Đầy Đủ",
+          "male": "Nam",
+          "my_profile": "Hồ Sơ",
+          "phone": "Số Điện Thoại",
+          "placeholder": {
+            "address": "Nhập Địa Chỉ Của Bạn",
+            "birthday": "Nhập Ngày Sinh Của Bạn",
+            "email": "Nhập Email Của Bạn",
+            "fullname": "Nhập Tên Đầy Đủ Của Bạn",
+            "phone": "Nhập Số Điện Thoại Của Bạn",
+            "username": "Nhập Tên Người Dùng Của Bạn"
+          },
+          "title": "Hồ Sơ",
+          "update_your_profile": "Cập Nhật Hồ Sơ",
+          "username": "Tên Người Dùng"
+        }
+      },
+      "cart": {
+        "checkout": "Thanh Toán",
+        "not_found": {
+          "message_one": "Giỏ hàng của bạn đang trống.",
+          "message_two": "Có vẻ như bạn chưa thêm gì vào giỏ hàng của mình. Hãy tiếp tục và khám phá các danh mục hàng đầu."
+        },
+        "price": "Giá",
+        "product": "Sản Phẩm",
+        "quantity": "Số Lượng",
+        "select_all": "Chọn Tất Cả",
+        "subtotal": "Thành Tiền",
+        "total": "Tổng Tiền"
+      },
+      "checkout": {
+        "place_order": "Đặt Hàng",
+        "price": "Giá",
+        "product": "Sản Phẩm",
+        "quantity": "Số Lượng",
+        "subtotal": "Thành Tiền",
+        "total_payment": "Tổng Thanh Toán"
+      },
+      "navigation": {
+        "home": "Trang Chủ",
+        "heroes": "Tướng",
+        "news": "Tin Tức",
+        "about": "Giới Thiệu"
+      },
+      "news": {
+        "back_to_news": "Trở Về Trang Tin Tức",
+        "not_found": {
+          "message_one": "Úi. Không tìm thấy trang.",
+          "message_two": "Xin lỗi nha, trang bạn đang tìm không tồn tại hoặc là đã bị dời đi địa chỉ khác."
+        }
+      },
+      "order": {
+        "message_one": "Đơn Hàng Đã Được Đặt Thành Công",
+        "message_two": "Cảm Ơn Vì Đã Mua Hàng",
+        "order_id": "ID Đơn Hàng.",
+        "view_order": "Xem Đơn Hàng"
+      },
+      "reset_password": {
+        "email": "Email",
+        "password": "Mật Khẩu Mới",
+        "password_confirmation": "Xác Nhận Mật Khẩu Mới",
+        "placeholder": {
+          "email": "Nhập Email Của Bạn",
+          "password": "Nhập Mật Khẩu Mới",
+          "password_confirmation": "Nhập Mật Khẩu Mới"
+        },
+        "reset_password_button": "Thay Đổi Mật Khẩu",
+        "signin_button": "Đăng nhập với mật khẩu mới",
+        "success": "Mật khẩu của bạn đã được thay đổi",
+        "title": "Đặt Lại Mật Khẩu Tài Khoản"
+      },
+      "search": {
+        "not_found": {
+          "message_one": "Không tìm thấy.",
+          "message_two": "Chúng tôi không tìm ra kết quả nào. Bạn vui lòng thử lại với từ khóa chính xác hơn."
+        },
+        "place_holder": "Tìm Kiếm Trong Jenova Store...",
+        "search_result_for": "Kết quả tìm kiếm cho"
       }
     }
   },
@@ -33,6 +167,43 @@
     "bring_me_back": "Quay Lại Thôi Nào!"
   },
 
+  "hero": {
+    "ability_detail": "Chi Tiết Kỹ Năng",
+    "agility": "Nhanh Nhẹn",
+    "all_heroes": "Tất Cả Tướng",
+    "armor": "Giáp",
+    "attack": "Công",
+    "attack_type": "Kiểu Tấn Công",
+    "close_history": "Thu Gọn",
+    "complexity": "Độ Phức Tạp",
+    "damage": "Sát Thương",
+    "defense": "Thủ",
+    "history": "Lịch Sử",
+    "intelligence": "Trí Tuệ",
+    "melee": "Cận Chiến",
+    "mobility": "Cơ Động",
+    "not_found": {
+      "first_message": "Ôi không. Không tìm thấy sản phẩm nào.",
+      "second_message": "Tìm kiếm của bạn không phù hợp với bất kỳ sản phẩm nào. Vui lòng thử lại."
+    },
+    "ranged": "Tầm Xa",
+    "read_full_history": "Đọc Đầy Đủ Lịch Sử",
+    "role": {
+      "carry": "Chủ lực",
+      "disabler": "Chế ngự",
+      "durable": "Bền bỉ",
+      "escape": "Đào tẩu",
+      "initiator": "Khai trận",
+      "jungler": "Đi rừng",
+      "nuker": "Dồn phép",
+      "pusher": "Đẩy nhà",
+      "support": "Hỗ trợ"
+    },
+    "roles": "Vai Trò",
+    "stats": "Chỉ Số",
+    "strength": "Sức Mạnh"
+  },
+  
   "locale": {
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"

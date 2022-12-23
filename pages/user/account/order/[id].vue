@@ -1,18 +1,18 @@
 <template>
   <div class="jnv-user__order-detail" v-if="Object.keys(order).length">
     <div class="jnv-user__od-back" @click="$router.push('/user/account/order')">
-      <button><Arrow type="left" height="15" fill="#fff"/><span>Back</span></button>
+      <button><Arrow type="left" height="15" fill="#fff"/><span>{{ $t(localePath + 'back') }}</span></button>
     </div>
 
     <div class="jnv-user__od-content">
       <div class="jnv-user__od-head">
         <div class="jnv-user__od-id">
-          <span>Order Id.</span>
+          <span>{{ $t(localePath + 'order_id') }}</span>
           <span class="jnv-user__od-id-main">{{ order.id }}</span>
         </div>
 
         <div class="jnv-user__od-placed-at">
-          <span>Placed At</span>
+          <span>{{ $t(localePath + 'placed_at') }}</span>
           <span class="jnv-user__od-placed-at-main">{{ $formatDateTime(order.placed_at) }}</span>
         </div>
       </div>
@@ -21,7 +21,7 @@
 
       <div class="jnv-user__od-body">
         <div class="jnv-user__od-title">
-          <span>Products</span>
+          <span>{{ $t(localePath + 'products') }}</span>
           <span class="jnv-user__od-product-count">{{ order.unique_product }}</span>
         </div>
 
@@ -54,15 +54,15 @@
       <div class="jnv-line-breaker"></div>
 
       <div class="jnv-user__od-total">
-        <span class="jnv-user__od-total-title">Order Total</span>
+        <span class="jnv-user__od-total-title">{{ $t(localePath + 'order_total') }}</span>
         <img :src="url.misc + 'coin.svg'" alt="Coin Icon" width="24">
         <span class="jnv-user__od-total-value">{{ order.total_price }}</span>
       </div>
     </div>
   </div>
 
-  <CuriositySearch first-message="No order found." v-else
-                   second-message="Please check your order."
+  <CuriositySearch :first-message="$t(localePath + 'not_found.detail.first_message')" v-else
+                   :second-message="$t(localePath + 'not_found.detail.second_message')"
                    :have-background="false"
                    max-width="333px"
   />
@@ -80,6 +80,7 @@
     middleware: 'authentication'
   })
 
+  const localePath = 'content.page.account.order.'
   const { url } = useAppConfig()
   const { order } = storeToRefs(useOrderStore())
   const { fetchOrderDetail } = useOrderStore()

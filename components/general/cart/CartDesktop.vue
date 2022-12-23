@@ -1,10 +1,10 @@
 <template>
   <table class="jnv-cart__items">
     <tr class="jnv-cart__items_header">
-      <th class="text-center" colspan="2">Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th colspan="2">Subtotal</th>
+      <th class="text-center" colspan="2">{{ $t('content.page.cart.product') }}</th>
+      <th>{{ $t('content.page.cart.price') }}</th>
+      <th>{{ $t('content.page.cart.quantity') }}</th>
+      <th colspan="2">{{ $t('content.page.cart.subtotal') }}</th>
     </tr>
 
     <!-- CHECKBOX -->

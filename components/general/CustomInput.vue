@@ -14,7 +14,7 @@
       >
 
       <span class="jnv-input__toggle-text" v-if="type == 'password'" @click="toggle = !toggle">
-        {{ toggle ? 'Hide' : 'Show' }}
+        {{ $t(localePath + (toggle ?  'hide' : 'show')) }}
       </span>
     </div>
     
@@ -50,6 +50,7 @@
   defineEmits(['update:modelValue'])
 
   const toggle = ref(false)
+  const localePath = 'content.page.account.change_password.'
 </script>
   
 <style lang="scss">

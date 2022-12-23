@@ -4,7 +4,7 @@
     <Agility :width="width" v-else-if="primary == 1"/>
     <Intelligence :width="width" v-else/>
 
-    <span v-if="hasLabel" class="jnv-attribute__label">{{ label[primary] }}</span>
+    <span v-if="hasLabel" class="jnv-attribute__label">{{ $t('hero.' + label[primary]) }}</span>
   </div>
 </template>
   
@@ -29,9 +29,9 @@
   })
 
   const label = {
-    0: 'Strength',
-    1: 'Agility',
-    2: 'Intelligence'
+    0: 'strength',
+    1: 'agility',
+    2: 'intelligence'
   }
 </script>
   

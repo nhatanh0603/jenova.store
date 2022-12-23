@@ -3,7 +3,7 @@
   <div class="jnv-header__search--desktop" ref="searchDesktop" v-if="isDesktop">
     <input type="text" 
            class="jnv-header__search-input"
-           placeholder="Search In Jenova Store..."
+           :placeholder="$t('content.page.search.place_holder')"
            :value="search.keyword"
            @click="show = true"
            @input="searching"
@@ -65,7 +65,7 @@
           <input type="text"
                  class="jnv-header__search-input"
                  ref="searchMobile"
-                 placeholder="Search In Jenova Store..."
+                 :placeholder="$t('content.page.search.place_holder')"
                  :value="search.keyword"
                  @input="searching"
                  @keydown.enter="toSearchPage"

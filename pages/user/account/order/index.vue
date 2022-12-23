@@ -37,8 +37,8 @@
     </div>
   </div>
 
-  <CuteAstronaut first-message="No Orders Yet" 
-                 second-message="Looks like you haven't made your choice yet..."
+  <CuteAstronaut :first-message="$t(localePath + 'not_found.first_message')" 
+                 :second-message="$t(localePath + 'not_found.second_message')"
                  v-else
   />
 </template>
@@ -53,6 +53,11 @@
     middleware: 'authentication'
   })
 
+  useHead({
+    title: 'My Purchase'
+  })
+
+  const localePath = 'content.page.account.order.'
   const { url } = useAppConfig()
   const { orders } = storeToRefs(useOrderStore())
   const { fetch } = useOrderStore()

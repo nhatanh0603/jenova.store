@@ -6,7 +6,7 @@
 
     <div class="jnv-checkout__review-info">
       <div class="jnv-checkout__total-payment">
-        <span class="jnv-checkout__total-text">Total Payment</span>
+        <span class="jnv-checkout__total-text">{{ $t('content.page.checkout.total_payment') }}</span>
 
         <div class="jnv-checkout__total-value">
           <img :src="url.misc + 'coin.svg'"  alt="Coin Icon" width="22">
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <button class="jnv-checkout__place-order-button" @click="placeOrder">Place Order</button>
+      <button class="jnv-checkout__place-order-button" @click="placeOrder">{{ $t('content.page.checkout.place_order') }}</button>
     </div>
   </div>
 </template>

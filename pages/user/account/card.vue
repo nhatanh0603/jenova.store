@@ -5,8 +5,8 @@
     />
   </div>
 
-  <CuteAstronaut first-message="No card found" 
-                second-message="Looks like you haven't made your choice yet..."
+  <CuteAstronaut :first-message="$t(localePath + 'not_found.first_message')" 
+                :second-message="$t(localePath + 'not_found.second_message')"
                 v-else
   />
 
@@ -28,7 +28,7 @@
             />
           </TransitionGroup>
 
-          <DetailCard :data="detailCards[0]" :position="1" v-else/>
+          <DetailCard :data="detailCards[1]" :position="1" v-else/>
 
           <div class="jnv-detail-card__direction" @click="direct('next')" v-if="cards.length > 1">
             <Arrow type="right" fill="#fff"/>
@@ -52,6 +52,11 @@
     middleware: 'authentication'
   })
 
+  useHead({
+    title: 'My Cards'
+  })
+
+  const localePath = 'content.page.account.card.'
   const cards = ref({})
   const detailCards = ref([])
   const show = ref(false)

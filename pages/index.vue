@@ -36,7 +36,7 @@
         </div>
 
         <div class="jnv-home__redirect-to-full-heroes">
-          <button @click="$router.push('/heroes')">All Heroes</button>
+          <button @click="$router.push('/heroes')">{{ $t('hero.all_heroes') }}</button>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         </div>
 
         <div class="jnv-home__redirect-to-full-heroes">
-          <button @click="$router.push('/heroes')">All Heroes</button>
+          <button @click="$router.push('/heroes')">{{ $t('hero.all_heroes') }}</button>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
         </div>
 
         <div class="jnv-home__redirect-to-full-heroes">
-          <button @click="$router.push('/heroes')">All Heroes</button>
+          <button @click="$router.push('/heroes')">{{ $t('hero.all_heroes') }}</button>
         </div>
       </div>
     </div>

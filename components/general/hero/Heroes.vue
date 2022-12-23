@@ -35,7 +35,7 @@
 
       <!----------------------------- PRICE ----------------------------->
       <div :class="{'jnv-heroes__sort-group': true, 'jnv-heroes__sort-group--mobile': isMobile}" @click="changeOptionalParams('price')">
-        <div class="jnv-heroes__sort-price">Price</div>
+        <div class="jnv-heroes__sort-price">{{ $t('content.general.price') }}</div>
 
         <div class="jnv-heroes__sort-arrow">
           <Arrow :type="sortSwitcher"/>

@@ -2,7 +2,7 @@
   <div class="jnv-news-detail" v-if="Object.keys(newsDetail).length">
     <div class="jnv-news-detail__back" @click="$router.push('/news')">
       <Arrow type="left" fill="#fff"/>
-      <span>Back To News</span>
+      <span>{{ $t('content.page.news.back_to_news') }}</span>
     </div>
 
     <div class="jnv-news-detail__divider"></div>
@@ -18,8 +18,8 @@
     <div v-html="newsDetail.body" class="jnv-news-detail__body"></div>
   </div>
 
-  <CuriositySearch first-message="Uh oh. Page not found." v-else
-                   second-message="Sorry, the page you were looking for doesn't exist or has been moved."           
+  <CuriositySearch :first-message="$t('content.page.news.not_found.message_one')" v-else
+                   :second-message="$t('content.page.news.not_found.message_two')"           
   />
 </template>
   
@@ -32,6 +32,12 @@
   const { newsDetail } = storeToRefs(useNewsStore())
   const { fetchNewsDetail } = useNewsStore()
   const { url } = useAppConfig()
+
+  watch(() => newsDetail.value.headline, (newValue) => {
+      useHead({
+        title: newValue
+      })
+  })
 
   onBeforeMount(() => {
     fetchNewsDetail(useRoute().params.slug, url.news)

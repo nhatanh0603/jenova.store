@@ -12,7 +12,7 @@
 
         <table class="jnv-checkout__product-value-table">
           <tr>
-            <th>Price</th>
+            <th>{{ $t('content.page.checkout.price') }}</th>
             <td>
               <div class="jnv-checkout__product-value-td">
                 <img :src="url.misc + 'coin.svg'"  alt="Coin Icon" width="20">
@@ -22,7 +22,7 @@
           </tr>
 
           <tr>
-            <th>Quantity</th>
+            <th>{{ $t('content.page.checkout.quantity') }}</th>
             <td>
               <div class="jnv-checkout__product-value-td">
                 <span class="jnv-checkout__product-value-quantity">{{ product.quantity }}</span>
@@ -31,7 +31,7 @@
           </tr>
 
           <tr>
-            <th>Subtotal</th>
+            <th>{{ $t('content.page.checkout.subtotal') }}</th>
             <td class="jnv-checkout__product-value-td">
               <img :src="url.misc + 'coin.svg'"  alt="Coin Icon" width="20">
 

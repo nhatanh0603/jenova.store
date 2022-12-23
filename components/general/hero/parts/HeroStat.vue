@@ -1,12 +1,14 @@
 <template>
   <div class="jnv-hero-detail__stats jnv-hero-detail__background">
-    <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">Stats</div>
+    <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">
+      {{ $t('hero.stats') }}
+    </div>
 
     <div class="jnv-hero-detail__stat-container">
       <!-- ATTACK -->
       <div class="jnv-hero-detail__stat-content">
         <span class="jnv-hero-detail__stat-title">
-          Attack
+          {{ $t('hero.attack') }}
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">
@@ -61,7 +63,7 @@
       <!-- DEFENSE -->
       <div class="jnv-hero-detail__stat-content">
         <span class="jnv-hero-detail__stat-title">
-          Defense
+          {{ $t('hero.defense') }}
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">
@@ -90,7 +92,7 @@
       <!-- MOBILITY -->
       <div class="jnv-hero-detail__stat-content">
         <span class="jnv-hero-detail__stat-title">
-          Mobility
+          {{ $t('hero.mobility') }}
         </span>
 
         <div class="jnv-hero-detail__stat-value-section">

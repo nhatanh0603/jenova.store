@@ -2,13 +2,14 @@
   <div class="jnv-user__change-password">
     <div class="jnv-user__change-password-wrapper">
       <CustomInput v-for="input, index in inputs" :key="index"
-        :id="input.id" :type="input.type" :label="input.label" :placeholder="input.placeholder"
+        :id="input.id" :type="input.type" :label="$t(localePath + input.id)"
+        :placeholder="$t(localePath + 'placeholder.' + input.id)"
         custom-style="two" v-model="data[input.id]" :error="data.errors?.[input.id]?.[0]"
       />
     </div>
 
     <div class="jnv-user__change-password-action" @click="changePassword">
-      <button class="jnv-user__change-password-action-update">Change Your Password</button>
+      <button class="jnv-user__change-password-action-update">{{ $t(localePath + 'change_your_password') }}</button>
     </div>
   </div>
 </template>
@@ -22,6 +23,12 @@
     middleware: 'authentication'
   })
 
+  useHead({
+    title: 'Change Password'
+  })
+
+  const localePath = 'content.page.account.change_password.'
+
   const data = ref({
     old_password: '',
     new_password: '',
@@ -30,9 +37,9 @@
   })
 
   const inputs = [
-    { id: 'old_password', type: 'password', placeholder: 'Enter Your Current Password', label: 'Current Password' },
-    { id: 'new_password', type: 'password', placeholder: 'Enter Your New Password', label: 'New Password' },
-    { id: 'new_password_confirmation', type: 'password', placeholder: 'Enter Your New Password', label: 'Confirm New Password' },
+    { id: 'old_password', type: 'password' },
+    { id: 'new_password', type: 'password' },
+    { id: 'new_password_confirmation', type: 'password' }
   ]
 
   const changePassword = async () => {

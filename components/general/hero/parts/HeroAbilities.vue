@@ -1,7 +1,9 @@
 <template>
   <div class="jnv-hero-detail__section">
     <div class="jnv-hero-detail__ability jnv-hero-detail__background">
-      <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">Ability Details</div>
+      <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">
+        {{ $t('hero.ability_detail') }}
+      </div>
 
       <div class="jnv-hero-detail__ability-container">
         <div class="jnv-hero-detail__ability-selector">

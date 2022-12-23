@@ -1,19 +1,19 @@
 <template>
   <div class="jnv-order">
     <div class="jnv-order__message">
-      <span class="jnv-order__message--primary">Order Successfully Placed</span>
+      <span class="jnv-order__message--primary">{{ $t('content.page.order.message_one') }}</span>
 
-      <span class="jnv-order__message--secondary">Thank You For Your Purchase!</span>
+      <span class="jnv-order__message--secondary">{{ $t('content.page.order.message_two') }}</span>
 
       <div class="jnv-order__order-id">
-        <span>Order ID.</span>
+        <span>{{ $t('content.page.order.order_id') }}</span>
         <span class="jnv-order__order-id-value">{{ order.id }}</span>
       </div>
       
       <button type="button" class="jnv-order__view-order" 
               @click="$router.push('/user/account/order/' + order.id)"
       >
-        View Order
+        {{ $t('content.page.order.view_order') }}
       </button>
     </div>
 

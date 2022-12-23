@@ -12,7 +12,7 @@
 
     <div class="jnv-cute-astronaut__picture">
       <img :src="url.misc + 'cute-astronaut.svg'" alt="Cute Astronaut">
-      <button @click="$router.push('/heroes')">Start Shopping</button>
+      <button @click="$router.push('/heroes')">{{ $t('content.general.start_shopping') }}</button>
     </div>
   </div>
 </template>

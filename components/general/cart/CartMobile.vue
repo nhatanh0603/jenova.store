@@ -2,7 +2,7 @@
   <table class="jnv-cart__table">
     <tr class="jnv-cart__table-header">
       <th class="text-center" colspan="2">
-        Product
+        {{ $t('content.page.cart.product') }}
       </th>
     </tr>
 

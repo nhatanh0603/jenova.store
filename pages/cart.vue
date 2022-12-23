@@ -10,12 +10,12 @@
         <div class="jnv-cart__select-all">
           <CheckBox @box-click="selectAllCart"
                     :checked="isCheckedAll"
-                    label="Select All"
+                    :label="$t('content.page.cart.select_all')"
           />
         </div>
 
         <div class="jnv-cart__total-value">
-          <span class="jnv-cart__total-value-title">Total</span>
+          <span class="jnv-cart__total-value-title">{{ $t('content.page.cart.total') }}</span>
 
           <div class="jnv-cart__total-value-wrapper">
             <img :src="url.misc + 'coin.svg'" alt="Coin Icon" width="20">
@@ -24,13 +24,13 @@
         </div>
 
         <div class="jnv-cart__checkout">
-          <button class="jnv-cart__checkout-button" @click="checkout">Checkout</button>
+          <button class="jnv-cart__checkout-button" @click="checkout">{{ $t('content.page.cart.checkout') }}</button>
         </div>
       </div>
     </div>
 
-  <CuteAstronaut first-message="Your cart is empty!"
-                 second-message="Looks like you have not added anything to you cart. Go ahead & explore top categories."
+  <CuteAstronaut :first-message="$t('content.page.cart.not_found.message_one')"
+                 :second-message="$t('content.page.cart.not_found.message_two')"
                  :background="true" v-else
   />
   </div>

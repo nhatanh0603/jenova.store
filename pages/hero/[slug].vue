@@ -24,8 +24,8 @@
     </div>
   </div>
 
-  <CuriositySearch first-message="Uh oh. No products found." v-else
-                   second-message="Your search did not match any products. Please try again."           
+  <CuriositySearch :first-message="$t('hero.not_found.first_message')" v-else
+                   :second-message="$t('hero.not_found.second_message')"           
   />
 </template>
   

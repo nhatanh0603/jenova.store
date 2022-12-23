@@ -36,11 +36,11 @@
       <div class="jnv-hero-card__actions">
         <div class="jnv-hero-card__action-group">
           <button class="jnv-hero-card__button jnv-hero-card__button--buy-now" @click="buyNow">
-            Buy Now
+            {{ $t('content.general.buy_now') }}
           </button>
 
           <button class="jnv-hero-card__button jnv-hero-card__button--add-to-cart" @click="addToCart">
-            Add To Cart
+            {{ $t('content.general.add_to_cart') }}
           </button>
         </div>
       </div>

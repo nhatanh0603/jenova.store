@@ -36,7 +36,11 @@
   useHead({
     titleTemplate: (titleChunk) => {
       return titleChunk ? appName + ' - ' + titleChunk : ''
-    }
+    },
+    
+    meta: [
+      { name: 'description', content: 'Việc làm NuxtJS Framework, Laravel Framework, Laravel, Vue.js, VueJs, Javascript, PHP, Nuxt JS Framework, Vue Js, Nuxt.JS Framework' }
+    ],
   })
 
   onBeforeMount(() => {

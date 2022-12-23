@@ -4,25 +4,29 @@
       <div class="jnv-user__profile-email">
         <label>
           <Email />
-          <span>Email</span>
+          <span>{{ $t(localePath + 'email') }}</span>
         </label>
         
         <div class="jnv-user__email-display">{{ data.email }}</div>
       </div>
 
       <CustomInput v-for="input, index in inputs" :key="index" :id="input.id" :type="input.type"
-        :label="input.label" :placeholder="input.placeholder" v-model="data[input.id]"
+        :label="$t(localePath + input.id)"
+        :placeholder="$t(localePath + 'placeholder.' + input.id)"
+        v-model="data[input.id]" :custom-style="locale == 'vi' ? 'two' : 'default'"
         :error="data?.errors[input.id]?.[0]"
       />
 
       <div class="jnv-user__profile-gender">
-        <CustomInput value="male" type="radio" label="Male" v-model="data.gender"/>
-        <CustomInput value="female" type="radio" label="Female" v-model="data.gender"/>
+        <CustomInput value="male" type="radio" :label="$t(localePath + 'male')" v-model="data.gender"/>
+        <CustomInput value="female" type="radio" :label="$t(localePath + 'female')" v-model="data.gender"/>
       </div>      
     </div>
     
     <div class="jnv-user__profile-action">
-      <button class="jnv-user__profile-action-update" @click="updateProfile">Update Your Profile</button>
+      <button class="jnv-user__profile-action-update" @click="updateProfile">
+        {{ $t(localePath + 'update_your_profile') }}
+      </button>
     </div>
   </div>
 </template>
@@ -31,12 +35,19 @@
   import CustomInput from '@/components/general/CustomInput.vue'
   import Email from '@/components/general/svg/Email.vue'
   import { useInitialDataStore } from '@/stores/initialData'
+  import { useI18n } from 'vue-i18n'
 
   definePageMeta({
     layout: "account",
     middleware: 'authentication'
   })
 
+  useHead({
+    title: 'My Profile'
+  })
+
+  const { locale } = useI18n()
+  const localePath = 'content.page.account.profile.'
   const data = ref({
     email: '',
     username: '',
@@ -50,11 +61,11 @@
 
   const inputs = [
     /* { id: 'email', type: 'text', placeholder: 'Enter Your Email', label: 'Email' }, */
-    { id: 'username', type: 'text', placeholder: 'Enter Your Username', label: 'Username' },
-    { id: 'fullname', type: 'text', placeholder: 'Enter Your Full Name', label: 'Fullname' },
-    { id: 'address', type: 'text', placeholder: 'Enter Your Address', label: 'Address' },
-    { id: 'phone', type: 'text', placeholder: 'Enter Your Phone Number', label: 'Phone' },
-    { id: 'birthday', type: 'date', placeholder: 'Choose Your Birthday', label: 'Birthday' }
+    { id: 'username', type: 'text' },
+    { id: 'fullname', type: 'text' },
+    { id: 'address', type: 'text' },
+    { id: 'phone', type: 'text' },
+    { id: 'birthday', type: 'date' }
   ]
 
   onBeforeMount(() => {

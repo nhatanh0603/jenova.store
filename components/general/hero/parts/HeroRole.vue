@@ -1,13 +1,15 @@
 <template>
   <div class="jnv-hero-detail__roles jnv-hero-detail__background">
-    <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">Roles</div>
+    <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">
+      {{ $t('hero.roles') }}
+    </div>
 
     <div class="jnv-hero-detail__role-container">
       <div class="jnv-hero-detail__role-content" v-for="(role, index) in data" :key="index">
         <div class="jnv-hero-detail__role-title">
           <img :src="url.heroRole + index.toLowerCase() + '.png'" :alt="index" class="jnv-hero-detail__role-image">
 
-          <span class="jnv-hero-detail__role-name">{{ index }}</span>
+          <span class="jnv-hero-detail__role-name">{{ $t('hero.role.' + index.toLowerCase()) }}</span>
         </div>
 
         <div class="jnv-hero-detail__role-bar-background">

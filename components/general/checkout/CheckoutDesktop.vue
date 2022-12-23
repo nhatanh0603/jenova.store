@@ -1,10 +1,10 @@
 <template>
   <table class="jnv-checkout__product-table">
     <tr class="jnv-checkout__product-table-header">
-      <th>Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
+      <th>{{ $t('content.page.checkout.product') }}</th>
+      <th>{{ $t('content.page.checkout.price') }}</th>
+      <th>{{ $t('content.page.checkout.quantity') }}</th>
+      <th>{{ $t('content.page.checkout.subtotal') }}</th>
     </tr>
 
     <tr v-for="product in products" :key="product.id" class="jnv-checkout__product-table-row">

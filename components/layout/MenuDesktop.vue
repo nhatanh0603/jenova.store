@@ -4,25 +4,25 @@
       <NuxtLink to="/" :active-class="'jnv-menu__active--' + forDevice"
                 :class="'jnv-menu__item--' + forDevice"
                 @click="linkClicked">
-                <span>Home</span>
+                <span>{{ $t('content.page.navigation.home') }}</span>
       </NuxtLink>
 
       <NuxtLink to="/heroes" :active-class="'jnv-menu__active--' + forDevice"
                 :class="'jnv-menu__item--' + forDevice"
                 @click="linkClicked">
-                <span>Heroes</span>
+                <span>{{ $t('content.page.navigation.heroes') }}</span>
       </NuxtLink>
 
       <NuxtLink to="/news" :active-class="'jnv-menu__active--' + forDevice"
                 :class="'jnv-menu__item--' + forDevice"
                 @click="linkClicked">
-                <span>News</span>
+                <span>{{ $t('content.page.navigation.news') }}</span>
       </NuxtLink>
 
       <NuxtLink to="/about" :active-class="'jnv-menu__active--' + forDevice"
                 :class="'jnv-menu__item--' + forDevice"
                 @click="linkClicked">
-                <span>About</span>
+                <span>{{ $t('content.page.navigation.about') }}</span>
       </NuxtLink>
     </div>    
   </div>

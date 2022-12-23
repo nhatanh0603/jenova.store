@@ -11,6 +11,7 @@
     "hide": "Hide",
     "or_sign_in": "Or Sign In",
     "password": "Password",
+    "password_reset_link_sent": "We have emailed your password reset link!",
     "profile": "Profile",
     "reset": "Reset",
     "show": "Show",
@@ -21,16 +22,186 @@
   },
 
   "content": {
+    "general": {
+      "add_to_cart": "Add to Cart",
+      "buy_now": "Buy Now",
+      "only_one_left": "Only 1 left",
+      "pieces_available": "pieces available",
+      "price": "Price",
+      "start_shopping": "Start Shopping"
+    },
     "page": {
       "about": {
-        "introduction": "Hello, I'm Nhat Anh, I created this site using Laravel Framework 9 as Back-end API and Nuxt 3 Framework as Front-end. This site is for fun purpose, so I do not buy or sell any items. Thank you for your visit.",
+        "introduction": "Hello, I'm Nhat Anh, I created this site using Laravel 9 Framework as Back-end API and Nuxt 3 Framework as Front-end. This site is for fun purpose, so I do not buy or sell any items. Thank you for your visit.",
         "my_skills": "My Skills"
+      },
+      "account": {
+        "card": {
+          "not_found": {
+            "first_message": "No card found.",
+            "second_message": "Looks like you haven't made your choice yet..."
+          },
+          "title": "My Cards",
+          "unit": "unit",
+          "units": "units"
+        },
+        "change_password": {
+          "change_your_password": "Change Your Password",
+          "hide": "Hide",
+          "new_password": "New Password",
+          "new_password_confirmation": "Confirm New Password",
+          "old_password": "Current Password",
+          "placeholder": {
+            "new_password": "Enter Your New Password",
+            "new_password_confirmation": "Enter Your New Password",
+            "old_password": "Enter Your Current Password"
+          },
+          "show": "Show",
+          "title": "Change Password"
+        },
+        "order": {
+          "back": "Back",
+          "load_more": "Load More",
+          "not_found": {
+            "detail": {
+              "first_message": "No order found.",
+              "second_message": "Please check your order."
+            },
+            "first_message": "No Orders Yet.",
+            "second_message": "Looks like you haven't made your choice yet..."
+          },
+          "order_id": "Order ID.",
+          "order_total": "Order Total",
+          "placed_at": "Placed At",
+          "products": "Products",
+          "title": "My Purchase"
+        },
+        "profile": {
+          "address": "Address",
+          "birthday": "Birthday",
+          "email": "Email",
+          "female": "Female",
+          "fullname": "FullName",
+          "male": "Male",
+          "my_profile": "My Profile",
+          "phone": "Phone",
+          "placeholder": {
+            "address": "Enter Your Address",
+            "birthday": "Enter Your Birthday",
+            "email": "Enter Your Email",
+            "fullname": "Enter Your FullName",
+            "phone": "Enter Your Phone Number",
+            "username": "Enter Your Username"
+          },
+          "title": "My Profile",
+          "update_your_profile": "Update Your Profile",
+          "username": "Username"
+        }
+      },
+      "cart": {
+        "checkout": "Checkout",
+        "not_found": {
+          "message_one": "Your cart is empty.",
+          "message_two": "Looks like you have not added anything to you cart. Go ahead & explore top categories."
+        },
+        "price": "Price",
+        "product": "Product",
+        "quantity": "Quantity",
+        "select_all": "Select All",
+        "subtotal": "Subtotal",
+        "total": "Total"
+      },
+      "checkout": {
+        "place_order": "Place Order",
+        "price": "Price",
+        "product": "Product",
+        "quantity": "Quantity",
+        "subtotal": "Subtotal",
+        "total_payment": "Total Payment"
+      },
+      "navigation": {
+        "home": "Home",
+        "heroes": "Heroes",
+        "news": "News",
+        "about": "About Me"
+      },
+      "news": {
+        "back_to_news": "Back To News",
+        "not_found": {
+          "message_one": "Uh oh. Page not found.",
+          "message_two": "Sorry, the page you were looking for doesn't exist or has been moved."
+        }
+      },
+      "order": {
+        "message_one": "Order Successfully Placed",
+        "message_two": "Thank You For Your Purchase!",
+        "order_id": "Order ID.",
+        "view_order": "View Order"
+      },
+      "reset_password": {
+        "email": "Email",
+        "password": "New Password",
+        "password_confirmation": "Confirm New Password",
+        "placeholder": {
+          "email": "Enter Your Email",
+          "password": "Enter Your New Password",
+          "password_confirmation": "Enter Your New Password"
+        },
+        "reset_password_button": "Reset Password",
+        "signin_button": "Sign in with the new password",
+        "success": "Your password has been reset!",
+        "title": "Reset Account Password"
+      },
+      "search": {
+        "not_found": {
+          "message_one": "No results found.",
+          "message_two": "We couldn't find what you searched for. Try searching again."
+        },
+        "place_holder": "Search In Jenova Store...",
+        "search_result_for": "Search result for"
       }
     }
   },
 
   "error": {
     "bring_me_back": "Bring Me Back!"
+  },
+
+  "hero": {
+    "ability_detail": "Ability Details",
+    "agility": "Agility",
+    "all_heroes": "All Heroes",
+    "armor": "Armor",
+    "attack": "Attack",
+    "attack_type": "Attack Type",
+    "close_history": "Close History",
+    "complexity": "Complexity",
+    "damage": "Damage",
+    "defense": "Defense",
+    "history": "History",
+    "intelligence": "Intelligence",
+    "melee": "Melee",
+    "mobility": "Mobility",
+    "not_found": {
+      "first_message": "Oh no. No products found.",
+      "second_message": "Your search did not match any products. Please try again."
+    },
+    "ranged": "Ranged",
+    "read_full_history": "Read Full History",
+    "role": {
+      "carry": "Carry",
+      "disabler": "Disabler",
+      "durable": "Durable",
+      "escape": "Escape",
+      "initiator": "Initiator",
+      "jungler": "Jungler",
+      "nuker": "Nuker",
+      "pusher": "Pusher",
+      "support": "Support"
+    },
+    "roles": "Roles",
+    "stats": "Stats",
+    "strength": "Strength"
   },
 
   "locale": {

@@ -1,7 +1,9 @@
 <template>
   <div class="jnv-hero-detail__section">
     <div class="jnv-hero-detail__history jnv-hero-detail__background">
-      <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">History</div>
+      <div class="jnv-hero-detail__secondary-title jnv-hero-detail__title-area">
+        {{ $t('hero.history') }}
+      </div>
 
       <div class="jnv-hero-detail__history-container">
         <Transition name="jnv-history-fade" mode="out-in">
@@ -11,7 +13,7 @@
 
         <div class="jnv-hero-detail__history-toggle">
           <span @click="showHistory = !showHistory">
-            {{ showHistory ? 'Close History' : 'Read Full History' }}
+            {{ showHistory ? $t('hero.close_history') : $t('hero.read_full_history') }}
           </span>
         </div>
       </div>

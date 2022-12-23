@@ -10,13 +10,14 @@
       <Intelligence v-else/>
 
       <span class="jnv-hero-detail__attribute-name">
-        {{ data.primary_attr == 0 ? 'Strength' : data.primary_attr == 1 ? 'Agility' : 'Intelligence'}}
+        {{ data.primary_attr == 0 ? $t('hero.strength') :
+           data.primary_attr == 1 ? $t('hero.agility') : $t('hero.intelligence')}}
       </span>
     </div>
 
     <div class="jnv-hero-detail__hero-on-liner" v-html="data.one_liner"></div>
 
-    <HeroBase :attack_type="parseInt(data.attack_type)" :complexity="parseInt(data.complexity)"/>
+    <HeroBase :attack_type="parseInt(data.attack_type)" :complexity="parseInt(data.complexity)" width="24px" size="19px"/>
 
     <HeroAttributes :attributes="data.attributes"/>
 
@@ -31,15 +32,21 @@
     <div class="jnv-hero-detail__actions">
       <div class="jnv-hero-detail__quantity">
         <QuantityEditable :stock="data.stock" @quantity-change="(val) => quantity = val"/>
-        <span class="jnv-hero-detail__stock-available--singular" v-if="data.stock == 1">Only 1 left</span>
-        <span class="jnv-hero-detail__stock-available--plural" v-else>{{ data.stock + ' pieces available'}}</span>
+        <span class="jnv-hero-detail__stock-available--singular" v-if="data.stock == 1">
+          {{ $t('content.general.only_one_left') }}
+        </span>
+        <span class="jnv-hero-detail__stock-available--plural" v-else>
+          {{ data.stock + ' ' + $t('content.general.pieces_available') }}
+        </span>
       </div>
 
       <div class="jnv-hero-detail__action-group">
         <button class="jnv-hero-detail__button jnv-hero-detail__button--buy-now" @click="buyNow">
-          Buy Now</button>
+          {{ $t('content.general.buy_now') }}
+        </button>
+
         <button class="jnv-hero-detail__button jnv-hero-detail__button--add-to-cart" @click="addToCart">
-          Add To Cart
+          {{ $t('content.general.add_to_cart') }}
         </button>
       </div>              
     </div>
@@ -96,7 +103,7 @@
 
       .jnv-hero-detail__attribute-name {
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         text-transform: uppercase;
         font-weight: bold;
       }
@@ -105,7 +112,21 @@
     .jnv-hero-detail__hero-on-liner {
       margin: 8px 0 15px 0;
       font-weight: 600;
+      font-size: 16px;
       color: $jnv__color--light-sage;
+    }
+
+    .jnv-hero-base__wrapper {
+      .jnv-hero-base__title {
+        font-size: 13px;
+        padding: 11px 0;
+      }
+
+      .jnv-hero-base__detail-wrapper {
+        span {
+          font-size: 14px;
+        }
+      }
     }
 
     .jnv-hero-detail__divider {
