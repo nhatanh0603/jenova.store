@@ -8,8 +8,10 @@
       />
     </div>
 
-    <div class="jnv-user__change-password-action" @click="changePassword">
-      <button class="jnv-user__change-password-action-update">{{ $t(localePath + 'change_your_password') }}</button>
+    <div class="jnv-user__change-password-action">
+      <button class="jnv-user__account-action-button" @click="changePassword">
+        {{ $t(localePath + 'change_your_password') }}
+      </button>
     </div>
   </div>
 </template>
@@ -99,21 +101,6 @@
     .jnv-user__change-password-action {
       display: flex;
       justify-content: center;
-
-      .jnv-user__change-password-action-update {
-        background: linear-gradient(126deg, #08724f, #0b8391);
-        padding: 8px 20px;
-        border-radius: 999px;
-        font-weight: 700;
-
-        &:hover {
-          background: linear-gradient(55deg, #760d0d, #af0404);
-        }
-
-        &:active {
-          box-shadow: 0 0 6px #f72222;
-        }
-      }
     }
   }
 </style>

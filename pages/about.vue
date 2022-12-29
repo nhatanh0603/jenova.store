@@ -33,7 +33,7 @@
     {id: 'vuejs', name: 'Vue.js', experience: 65},
     {id: 'nuxtjs', name: 'NuxtJS Framework', experience: 60},
     {id: 'msoffice', name: 'Microsoft Office', experience: 37},
-    {id: 'illustrator', name: 'Adobe Illustrator', experience: 22}
+    {id: 'illustrator', name: 'Adobe Illustrator', experience: 30}
   ]
 </script>
   
@@ -88,7 +88,7 @@
     }
   }
 
-  $exps: (php: 60%, laravel: 70%, mysql: 57%, html: 70%, bootstrap: 40%, javascript: 60%, vuejs: 65%, nuxtjs: 60%, msoffice: 37%, illustrator: 22%);
+  $exps: (php: 60%, laravel: 70%, mysql: 57%, html: 70%, bootstrap: 40%, javascript: 60%, vuejs: 65%, nuxtjs: 60%, msoffice: 37%, illustrator: 30%);
 
   @mixin keyframe($exp, $name) {
     .jnv-about__keyframe-#{$name} {

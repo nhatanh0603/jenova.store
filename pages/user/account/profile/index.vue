@@ -1,13 +1,21 @@
 <template>
   <div class="jnv-user__profile">
     <div class="jnv-user__profile-input-wrapper">
-      <div class="jnv-user__profile-email">
-        <label>
-          <Email />
-          <span>{{ $t(localePath + 'email') }}</span>
-        </label>
+      <div class="jnv-user__profile-email-section">
+        <div class="jnv-user__account-profile-email">
+          <label>
+            <Email />
+            <span class="jnv-user__account-email-label-text">{{ $t(localePath + 'email') }}</span>
+          </label>
+          
+          <div class="jnv-user__account-email-display">{{ data.email }}</div>
+        </div>
         
-        <div class="jnv-user__email-display">{{ data.email }}</div>
+        <div class="jnv-user__profile-change-email">
+          <button class="jnv-user__account-action-button" @click="$router.push('profile/change-email')">
+            {{ $t('content.page.account.profile.change_email') }}
+          </button>
+        </div>
       </div>
 
       <CustomInput v-for="input, index in inputs" :key="index" :id="input.id" :type="input.type"
@@ -24,7 +32,7 @@
     </div>
     
     <div class="jnv-user__profile-action">
-      <button class="jnv-user__profile-action-update" @click="updateProfile">
+      <button class="jnv-user__account-action-button" @click="updateProfile">
         {{ $t(localePath + 'update_your_profile') }}
       </button>
     </div>
@@ -35,6 +43,7 @@
   import CustomInput from '@/components/general/CustomInput.vue'
   import Email from '@/components/general/svg/Email.vue'
   import { useInitialDataStore } from '@/stores/initialData'
+  import { useAuthStore } from '@/stores/auth';
   import { useI18n } from 'vue-i18n'
 
   definePageMeta({
@@ -85,6 +94,7 @@
 
       async onResponse({ response }) {
         if(response.status == 200) {
+          useAuthStore().user.info = response._data.user
           data.value.email = response._data.user.email
           data.value.username = response._data.user.name
           data.value.fullname = response._data.user.fullname
@@ -156,38 +166,17 @@
       justify-content: center;
       row-gap: 20px;
 
-      .jnv-user__profile-email {
+      .jnv-user__profile-email-section {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         width: 100%;
         max-width: 400px;
-        border-radius: 999px;
-        height: 34px;
-        padding: 6px 0 6px 0;
+        row-gap: 10px;
+        margin-bottom: 10px;
 
-        label {
+        .jnv-user__profile-change-email {
           display: flex;
-          align-items: center;      
-          column-gap: 6px;
-          padding: 0 15px;
-          font-weight: 700;
-          text-transform: uppercase;
-          background: linear-gradient(126deg, #08724f, #0b8391);
-          height: inherit;
-          border-radius: 999px 0 0 999px;
-        }
-
-        .jnv-user__email-display {
-          display: flex;
-          align-items: center;
-          background-color: white;
-          color: #079b42;
-          width: 100%;
-          padding: 0 12px;
-          font-size: 15px;
-          font-weight: 700;
-          height: inherit;
-          border-radius: 0 999px 999px 0;
+          justify-content: center;
         }
       }
 
@@ -201,21 +190,6 @@
     .jnv-user__profile-action {
       display: flex;
       justify-content: center;
-
-      .jnv-user__profile-action-update {
-        background: linear-gradient(126deg, #08724f, #0b8391);
-        padding: 8px 20px;
-        border-radius: 999px;
-        font-weight: 700;
-
-        &:hover {
-          background: linear-gradient(55deg, #760d0d, #af0404);
-        }
-
-        &:active {
-          box-shadow: 0 0 6px #f72222;
-        }
-      }
     }
   }
 </style>

@@ -45,6 +45,23 @@
           "unit": "unit",
           "units": "units"
         },
+        "change_email": {
+          "button": {
+            "change_email": "Change Email",
+            "send_code": "Send Code",
+            "verify_code": "Verify Code",
+            "waiting": "Waiting"
+          },
+          "change_email": "Change Email",
+          "email": "Email",
+          "otp": "OTP",
+          "placeholder": {
+            "email": "Enter Your New Email",
+            "otp": "Enter One Time Password (6 digits)"
+          },
+          "user_guide": "*Click the <span style=\"font-weight: 700;color: #ffad41;\">SEND CODE</span> button, and we will send a one-time code (6 digits) to your email address.",
+          "verify_current_email": "Verify Current Email"
+        },
         "change_password": {
           "change_your_password": "Change Your Password",
           "hide": "Hide",
@@ -79,6 +96,7 @@
         "profile": {
           "address": "Address",
           "birthday": "Birthday",
+          "change_email": "Change Email",
           "email": "Email",
           "female": "Female",
           "fullname": "FullName",

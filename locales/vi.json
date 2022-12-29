@@ -45,6 +45,23 @@
           "unit": "thẻ",
           "units": "thẻ"
         },
+        "change_email": {
+          "button": {
+            "change_email": "Đổi Email",
+            "send_code": "Gửi Mã",
+            "verify_code": "Xác Minh Mã",
+            "waiting": "Chờ"
+          },
+          "change_email": "Thay Đổi Email",
+          "email": "Email",
+          "otp": "OTP",
+          "placeholder": {
+            "email": "Nhập Email Mới Của Bạn",
+            "otp": "Nhập Mật Khẩu Dùng Một Lần (6 số)"
+          },
+          "user_guide": "*Bấm vào nút <span style=\"font-weight: 700;color: #ffad41;\">GỬI MÃ</span>, và chúng tôi sẽ gửi một mật khẩu dùng một lần (6 số) đến email của bạn.",
+          "verify_current_email": "Xác Minh Email Hiện Tại"
+        },
         "change_password": {
           "change_your_password": "Đổi Mật Khẩu",
           "hide": "Ẩn",
@@ -79,6 +96,7 @@
         "profile": {
           "address": "Địa Chỉ",
           "birthday": "Ngày Sinh",
+          "change_email": "Thay Đổi Email",
           "email": "Email",
           "female": "Nữ",
           "fullname": "Tên Đầy Đủ",

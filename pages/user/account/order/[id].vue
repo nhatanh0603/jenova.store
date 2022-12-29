@@ -252,7 +252,7 @@
 
   .jnv-line-breaker {
     height: 2px;
-    margin: 0 -20px;
+    margin: 20px -20px;
     background: linear-gradient(45deg, transparent, rgb(113 163 255), transparent);
   }
 </style>

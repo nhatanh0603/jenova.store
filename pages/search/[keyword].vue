@@ -4,8 +4,10 @@
       <span class="jnv-search__page-keyword">{{ $route.params.keyword }}</span></div>
 
     <div v-if="!loading">
-      <div class="jnv-search__page-container" v-if="Object.keys(result).length">
+      <div id="JnvSearchCardWrapper" class="jnv-search__page-container" v-if="Object.keys(result).length">
         <HeroCard v-for="(hero, index) in result" :hero="hero" :key="index"/>
+
+        <FlexWrapJustify element-width="256" :element-count="result.length" wrapper-id="JnvSearchCardWrapper" column-gap="30"/>
       </div>
 
       <CuriositySearch :first-message="$t('content.page.search.not_found.message_one')" v-else
@@ -20,6 +22,7 @@
   
 <script setup>
   import HeroCard from '@/components/general/hero/HeroCard.vue'
+  import FlexWrapJustify from '@/components/general/FlexWrapJustify.vue'
   import CuriositySearch from '@/components/general/CuriositySearch.vue'
 
   useHead({
@@ -77,7 +80,7 @@
     .jnv-search__page-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 3.5rem 2rem;
+      gap: 60px 30px;
       justify-content: space-evenly;
     }
 

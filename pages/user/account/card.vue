@@ -1,8 +1,10 @@
 <template>
-  <div class="jnv-user__cards" :style="{'justify-content': cards.length <= 2 ? 'flex-start': null}" v-if="cards.length > 0">
+  <div class="jnv-user__cards" id="JnvUserCardWrapper" v-if="cards.length > 0">
     <SimpleCard :data="card" :position="index" v-for="card, index in cards" :key="index"
                 @show-detail="showDetailCard"
     />
+
+    <FlexWrapJustify element-width="130" :element-count="cards.length" wrapper-id="JnvUserCardWrapper" column-gap="25"/>
   </div>
 
   <CuteAstronaut :first-message="$t(localePath + 'not_found.first_message')" 
@@ -45,6 +47,7 @@
   import CuteAstronaut from '@/components/general/CuteAstronaut.vue'
   import Xmark from '@/components/general/svg/Xmark.vue'
   import Arrow from '@/components/general/svg/Arrow.vue'
+  import FlexWrapJustify from '@/components/general/FlexWrapJustify.vue'
   import { useInitialDataStore } from '@/stores/initialData'
 
   definePageMeta({

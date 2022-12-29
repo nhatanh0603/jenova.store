@@ -44,8 +44,10 @@
     </div>
 
     <!----------------------------- HEROES CARD ----------------------------->
-    <div class="jnv-heroes__cards-wrapper" v-if="!isLoading.initiate">
+    <div id="JnvHeroesCardWrapper" class="jnv-heroes__cards-wrapper" v-if="!isLoading.initiate">
       <HeroCard v-for="hero in heroes.data" :hero="hero" :key="hero.id"/>
+
+      <FlexWrapJustify element-width="256" :element-count="heroes.data.length" wrapper-id="JnvHeroesCardWrapper" column-gap="40" :lazy-load="heroes.meta.next_cursor"/>
     </div>
     
     <span class="jnv-loader--line" v-if="isLoading.continue"></span>
@@ -56,6 +58,7 @@
   
 <script setup>
   import HeroCard from './HeroCard.vue'
+  import FlexWrapJustify from '../FlexWrapJustify.vue'
   import PrimaryAttribute from './parts/filter/PrimaryAttribute.vue'
   import AttackType from './parts/filter/AttackType.vue'
   import Complexity from './parts/filter/Complexity.vue'
@@ -386,7 +389,7 @@
       display: flex;
       flex-flow: row wrap;
       justify-content: space-evenly;
-      gap: 3.5rem 2rem;
+      gap: 60px 40px;
     }
 
     .jnv-heroes__nothing-found {

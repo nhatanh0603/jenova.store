@@ -45,6 +45,19 @@
     show.value = status
     document.body.style.overflow = status ?  'hidden' : ''
   }
+
+  onBeforeMount(() => {
+    window.addEventListener('resize', onResizeToggle)
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', onResizeToggle)
+  })
+
+  const onResizeToggle = () => {
+    if(window.innerWidth > 900)
+      show.value = false
+  }
 </script>
 
 <style lang="scss">
@@ -64,6 +77,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    max-width: unset;
     height: 100vh;
     background-image: $jnv-app__background--primary;
     z-index: 55;

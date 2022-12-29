@@ -148,4 +148,59 @@
       }
     }
   }
+
+  .jnv-user__account-action-button {
+    background: linear-gradient(126deg, #08724f, #0b8391);
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+
+    &:hover {
+      background: linear-gradient(55deg, #760d0d, #af0404);
+    }
+
+    &:active {
+      box-shadow: 0 0 6px #f72222;
+    }
+  }
+
+  .jnv-user__account-profile-email {
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    height: 34px;
+    padding: 6px 0 6px 0;
+
+    label {
+      display: flex;
+      align-items: center;      
+      column-gap: 6px;
+      padding: 0 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(126deg, #08724f, #0b8391);
+      height: inherit;
+      border-radius: 999px 0 0 999px;
+    }
+
+    .jnv-user__account-email-display {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      color: #079b42;
+      width: 100%;
+      padding: 0 12px;
+      font-size: 15px;
+      font-weight: 700;
+      height: inherit;
+      border-radius: 0 999px 999px 0;
+      overflow: auto;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .jnv-user__account-profile-email .jnv-user__account-email-label-text {
+      display: none;
+    }
+  }
 </style>

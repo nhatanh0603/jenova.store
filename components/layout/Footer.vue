@@ -46,7 +46,7 @@
 
       <div class="jnv-footer__divider"></div>
 
-      <div class="jnv-footer__reserved">© Jenova Store 2022. All rights reserved.</div>
+      <div class="jnv-footer__reserved">© Jenova Store {{ new Date().getFullYear() }}. All rights reserved.</div>
     </footer>
   </div>
 </template>
