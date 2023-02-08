@@ -102,5 +102,30 @@ export const useOrderStore = defineStore('order', () => {
     })
   }
 
-  return { order, orders, place, fetch, fetchOrderDetail }
+  const searchOrder = async (keyword) => {
+    await useApi('/search/order/' + keyword, {
+      async onRequest() {
+        ini.globalPending = true
+      },
+
+      async onRequestError({ error }) {
+        ini.globalPending = false
+        notification('danger', error)
+      },
+
+      async onResponse({ response }) {
+        if(response.status == 200) {
+          ini.globalPending = false
+          orders.value = response._data
+        }
+      },
+
+      async onResponseError({ response }) {
+        ini.globalPending = false
+        notification('danger', response._data.message)
+      }
+    })
+  }
+
+  return { order, orders, place, fetch, fetchOrderDetail, searchOrder }
 })

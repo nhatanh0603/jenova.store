@@ -1,4 +1,20 @@
 <template>
+  <div class="jnv-user__search-order">
+    <div class="jnv-user__search-order-input-group">
+      <input class="jnv-user__search-order-input" :placeholder="$t(localePath + 'search.place_holder')"
+              type="text" v-model="keyword" @keyup.enter="search"
+      >
+
+      <div class="jnv-user__search-order-clear" @click="clearSearch">
+        <Cancel />
+      </div>
+    </div>
+
+    <button class="jnv-user__search-order-action" @click="search">
+      {{ $t(localePath + 'search.search') }}
+    </button>
+  </div>
+  
   <div class="jnv-user__order" v-if="isAnyOrderExist">
     <div class="jnv-user__order-item" v-for="order in orders.data" :key="order.id" @click="openOrderDetail(order.id)">
       <div class="jnv-user__order-item-head">
@@ -45,6 +61,7 @@
   
 <script setup>
   import CuteAstronaut from '@/components/general/CuteAstronaut.vue'
+  import Cancel from '@/components/general/svg/Cancel.vue'
   import { useOrderStore } from '@/stores/order'
   import { storeToRefs } from 'pinia'
   
@@ -60,7 +77,9 @@
   const localePath = 'content.page.account.order.'
   const { url } = useAppConfig()
   const { orders } = storeToRefs(useOrderStore())
-  const { fetch } = useOrderStore()
+  const { fetch, searchOrder } = useOrderStore()
+  const keyword = ref('')
+  const old_keyword = ref('')
 
   const isAnyOrderExist = computed(() => {
     if(Object.keys(orders.value).length > 0)
@@ -80,10 +99,79 @@
   const openOrderDetail = (id) => {
     useRouter().push('order/' + id)
   }
+
+  const search = () => {
+    if(keyword.value != '' && old_keyword.value != keyword.value) {
+      searchOrder(keyword.value)
+      old_keyword.value = keyword.value
+    }
+    
+    if(keyword.value == '' && old_keyword.value != '')
+      clearSearch()
+  }
+
+  const clearSearch = () => {
+    if(old_keyword.value != '')
+      fetch()
+
+    keyword.value = ''
+    old_keyword.value = ''
+  }
 </script>
   
 <style lang="scss">
   @import '@/assets/css/variables.scss';
+
+  .jnv-user__search-order {
+    display: flex;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 3px rgb(32, 32, 32));
+
+    .jnv-user__search-order-input-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    
+      .jnv-user__search-order-input {
+        width: 100%;
+        padding: 8px 36px 8px 12px;
+        border: none;
+        border-radius: 99px 0 0 99px;
+      }
+
+      .jnv-user__search-order-clear {
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        right: 5px;
+        cursor: pointer;
+
+        svg {
+          fill: #747474;
+        }
+
+        &:hover {
+          svg {
+            fill: rgb(213 0 0) !important;
+          }
+        }
+      }
+    }
+
+    .jnv-user__search-order-action {
+      background: radial-gradient(circle at 15%, rgb(118 2 2), rgb(155 18 18));
+      border-radius: 0 99px 99px 0;
+      padding: 5px 10px;
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+
+      &:hover {
+        background: radial-gradient(circle at 15%, rgb(175 8 8), rgb(213 0 0));
+      }
+    }
+  }
 
   .jnv-user__order {
     display: flex;

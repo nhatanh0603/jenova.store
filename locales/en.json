@@ -91,6 +91,10 @@
           "order_total": "Order Total",
           "placed_at": "Placed At",
           "products": "Products",
+          "search": {
+            "place_holder": "Order ID or Product name...",
+            "search": "Search"
+          },
           "title": "My Purchase"
         },
         "profile": {

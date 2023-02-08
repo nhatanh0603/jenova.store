@@ -91,6 +91,10 @@
           "order_total": "Tổng Đơn Hàng",
           "placed_at": "Đặt Lúc",
           "products": "Các Sản Phẩm",
+          "search": {
+            "place_holder": "ID Đơn hàng hoặc Tên sản phẩm...",
+            "search": "Tìm Kiếm"
+          },
           "title": "Đơn Mua"
         },
         "profile": {
